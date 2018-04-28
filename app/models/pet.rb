@@ -1,3 +1,3 @@
-class Pet < MoipActiveModel
+class Pet < ActiveRecord::Base
 
 end
