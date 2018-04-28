@@ -10,8 +10,7 @@ class SessionsController < ApplicationController
       flash[:notice] = "Wow! Welcome again, you logged in as #{authorized_user.username}"
       redirect_to root_path
     else
-      flash[:notice] = 'Invalid Username or Password'
-      flash[:color]= 'invalid'
+      flash[:error] = 'Invalid Username or Password'
       render 'login'
     end
   end
