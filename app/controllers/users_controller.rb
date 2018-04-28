@@ -16,7 +16,12 @@ class UsersController < ApplicationController
 
   def create
     user = User.create(user_params)
-    users_errors = check_user_errors(user)
+    if user.errors.any?
+      users_errors = []
+      user.errors.full_messages.each do |message|
+        users_errors << message
+      end
+    end
     user.save!
     flash[:notice] = 'You signed up successfully!'
     redirect_to root_path
