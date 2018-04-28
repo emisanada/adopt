@@ -22,7 +22,12 @@
           <ul>
             <li><%= link_to fa_icon("plus", text: "Add pet for adoption"), new_pet_path %></li>
             <li><%= link_to fa_icon("paw", text: "Check out pets"), pets_path %></li>
-            <!-- <li><%#= link_to fa_icon("paw", text: "Login"), login_path %></li> -->
+            <% if @current_user.present? %>
+              <li><%= link_to fa_icon("user", text: @current_user.name), edit_user_path(@current_user.id) %></li>
+              <li><%= link_to fa_icon("sign-out", text: "Logout"), logout_path %></li>
+            <% else %>
+              <li><%= link_to fa_icon("sign-in", text: "Login"), login_path %></li>
+            <% end %>
             <li><%= link_to fa_icon("user-plus", text: "Signup"), new_user_path %></li>
             <li><%= link_to fa_icon("users", text: "List users"), users_path %></li>
           </ul>
@@ -41,12 +46,13 @@
 
       <!-- Warnings and Notices -->
       <% if flash[:error].present? && flash[:error].kind_of?(Array) %>
-        <% flash[:error].each do |error| %>
-          <div class="alert alert-error" id="error">
-            <%= error.to_s %>
-          </div>
-        <% end %>
+        <div class="alert alert-error" id="error">
+          <% flash[:error].each do |error| %>
+            <p><%= error.to_s %></p>
+          <% end %>
+        </div>
       <% end %>
+
       <% if flash[:error].present? && flash[:error].kind_of?(String) %>
         <div class="alert alert-error" id="error"><%= flash[:error] %></div>
       <% end %>

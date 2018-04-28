@@ -24,6 +24,18 @@ class User < ActiveRecord::Base
 
   has_many :pets
 
+  def self.authenticate(username='', login_password='')
+    user = User.find_by_username(username)
+    if user && user.match_password(login_password)
+      return user
+    end
+    false
+  end
+
+  def match_password(login_password='')
+    encrypted_password == BCrypt::Engine.hash_secret(login_password, salt)
+  end
+
   private
     def encrypt_password
       if password.present?

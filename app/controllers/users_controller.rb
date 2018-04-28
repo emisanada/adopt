@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
     begin
       user.save!
-      flash[:notice] = 'You signed up successfully'
+      flash[:notice] = 'You signed up successfully!'
       redirect_to root_path
     rescue => e
       flash[:error] = 'Ops! There was a problem on your signup!'
