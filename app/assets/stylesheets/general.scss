@@ -1,0 +1,50 @@
+@import "colors";
+
+.alert {
+  padding: 7px 15px;
+  margin-bottom: 10px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-family: "Raleway", Helvetica, sans-serif;
+  font-size: 14px;
+
+  &.alert-success {
+    color: $success_color;
+    background-color: $success_background;
+    border-color: $success_border;
+    &.alert-link {
+      color: $success_link_color;
+    }
+  }
+
+  &.alert-info {
+    color: $info_color;
+    background-color: $info_background;
+    border-color: $info_border;
+    &.alert-link {
+      color: $info_link_color;
+    }
+  }
+
+  &.alert-warning {
+    color: $alert_color;
+    background-color: $alert_background;
+    border-color: $alert_border;
+    &.alert-link {
+      color: $alert_link_color;
+    }
+  }
+
+  &.alert-error {
+    color: $error_color;
+    background-color: $error_background;
+    border-color: $error_border;
+    &.alert-link {
+      color: $error_link_color;
+    }
+  }
+
+  &.alert-link {
+    font-weight: bold;
+  }
+}
