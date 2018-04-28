@@ -7,15 +7,14 @@
 <!-- END PAGE HEADER-->
 
 <% @users.each do |u| %>
-  <article class="users-list">
-    <div class="title">
+  <div class="users-list">
+    <div class="user-card">
       <h2><%= u.name %></h2>
-      <p><%= u.email %></p>
-      <p><%= u.location %></p>
-      <p><%= u.username %></p>
-      <p><%= u.about %></p>
+      <p class="item"><strong>Contact</strong>: <%= u.email %></p>
+      <p class="item"><strong>Location</strong>: <%= u.location %></p>
+      <p class="item"><strong>About</strong>: <%= u.about %></p>
     </div>
-  </article>
+  </div>
 <% end %>
 <% if @users.blank? %>
   <p>Nenhum usuário</p>

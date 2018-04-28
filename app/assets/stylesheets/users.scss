@@ -1,0 +1,16 @@
+@import "colors";
+
+$header_font: "Raleway", Helvetica, sans-serif;
+$body_font: "Source Sans Pro", Helvetica, sans-serif;
+
+.user-card {
+  background-color: $background_color_optional;
+  color: $body_font_color_optional;
+  border-radius: 25px;
+  padding: 15px;
+  margin-bottom: 15px;
+  width: 45%;
+  .item {
+    padding-left: 15px;
+  }
+}
