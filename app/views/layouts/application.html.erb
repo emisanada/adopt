@@ -22,6 +22,9 @@
           <ul>
             <li><%= link_to fa_icon("plus", text: "Add pet for adoption"), new_pet_path %></li>
             <li><%= link_to fa_icon("paw", text: "Check out pets"), pets_path %></li>
+            <!-- <li><%#= link_to fa_icon("paw", text: "Login"), login_path %></li> -->
+            <li><%= link_to fa_icon("user-plus", text: "Signup"), new_user_path %></li>
+            <li><%= link_to fa_icon("users", text: "List users"), users_path %></li>
           </ul>
         </nav>
         <nav class="main">
@@ -35,6 +38,15 @@
           </ul>
         </nav>
       </header>
+
+      <!-- Warnings and Notices -->
+      <% if flash[:error] %>
+        <div class="alert alert-error" id="error"> <%= flash[:error] %></div>
+      <% end %>
+
+      <% if flash[:notice] %>
+        <div class="alert alert-success" id="notice"> <%= flash[:notice] %></div>
+      <% end %>
 
       <!-- Main -->
       <div id="main">
