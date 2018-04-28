@@ -23,4 +23,11 @@ class ApplicationController < ActionController::Base
     @current_user = User.find(session[:user_id]) if session[:user_id]
   end
 
+  def check_user
+    if @current_user.blank?
+      flash[:error] = "To do this action, please login first ;)"
+      redirect_to login_path
+    end
+  end
+
 end
