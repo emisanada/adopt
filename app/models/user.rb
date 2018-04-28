@@ -1,14 +1,26 @@
 class User < ActiveRecord::Base
-  attr_accessor :password
+  attr_accessor :password, :password_confirmation
 
   before_validation :encrypt_password
   after_save :clear_password
 
   EMAIL_REGEX = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i
-  validates :email, presence: true, uniqueness: true, format: EMAIL_REGEX
-  validates :username, presence: true, uniqueness: true, length: { in: 3..25 }
-  validates :password, confirmation: true
-  validates_length_of :password, in: 6..20, on: :create
+  PASSWORD_FORMAT = /\A(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[[:^alnum:]])/x
+
+  validates :password,
+    presence: true,
+    length: { in: 8..25 },
+    format: { with: PASSWORD_FORMAT },
+    confirmation: true,
+    on: :create
+  validates :email,
+    presence: true,
+    uniqueness: true,
+    format: EMAIL_REGEX
+  validates :username,
+    presence: true,
+    uniqueness: true,
+    length: { in: 3..25 }
 
   has_many :pets
 

@@ -8,25 +8,33 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def new
   end
 
   def create
-    user = User.new(user_params)
-    user.save
-    if user.save!
-      flash[:notice] = 'You signed up successfully'
-    else
-      flash[:error]= 'Ops! There was a problem on your signup!'
+    user = User.create(user_params)
+    if user.errors.any?
+      users_errors = []
+      user.errors.full_messages.each do |message|
+        users_errors << message
+      end
     end
-    redirect_to root_path
-  rescue => e
-    Rails.logger.error "-------------> #{e.message}"
-    Rails.logger.error "-------------> #{e.backtrace.join("\n\t")}"
-    flash[:error]= 'invalid'
-    redirect_to root_path
+
+    begin
+      user.save!
+      flash[:notice] = 'You signed up successfully'
+      redirect_to root_path
+    rescue => e
+      flash[:error] = 'Ops! There was a problem on your signup!'
+      if users_errors.present?
+        flash[:error] = [flash[:error]] << users_errors
+        flash[:error].flatten!
+      end
+      redirect_to action: :new
+    end
   end
 
   def edit
