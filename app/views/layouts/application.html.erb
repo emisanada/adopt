@@ -40,8 +40,14 @@
       </header>
 
       <!-- Warnings and Notices -->
-      <% if flash[:error] %>
-        <div class="alert alert-error" id="error"> <%= flash[:error] %></div>
+      <% if flash[:error] && flash[:error].kind_of?(Array) %>
+        <% flash[:error].each do |error| %>
+          <div class="alert alert-error" id="error">
+            <%= error.to_s %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="alert alert-error" id="error"><%= flash[:error] %></div>
       <% end %>
 
       <% if flash[:notice] %>
