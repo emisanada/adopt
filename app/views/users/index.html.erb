@@ -5,3 +5,18 @@
   </h1>
 </div>
 <!-- END PAGE HEADER-->
+
+<% @users.each do |u| %>
+  <article class="users-list">
+    <div class="title">
+      <h2><%= u.name %></h2>
+      <p><%= u.email %></p>
+      <p><%= u.location %></p>
+      <p><%= u.username %></p>
+      <p><%= u.about %></p>
+    </div>
+  </article>
+<% end %>
+<% if @users.blank? %>
+  <p>Nenhum usuário</p>
+<% end %>

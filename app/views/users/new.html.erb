@@ -1,7 +1,41 @@
 <!-- BEGIN PAGE HEADER-->
 <div class="top-section">
   <h1>
-    Register
+    Be a part of our team
   </h1>
-</div>
 <!-- END PAGE HEADER-->
+
+  <%= form_for :user, url: { action: "create" } do |f| %>
+    <div class="form-group">
+      <%= f.label "Name" %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "E-mail" %>
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "Location" %>
+      <%= f.text_field :location, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "Username" %>
+      <%= f.text_field :username, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "Password" %>
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "Password Confirmation" %>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+    </div>
+
+    <%= f.button "Register", id: "create-btn" %>
+  <% end %>
+</div>
