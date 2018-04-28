@@ -40,11 +40,11 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id]).update_attributes(user_update_params)
-    user.save!
+    flash[:notice] = 'Your changes were saved! Hurray!'
     redirect_to root_path
   rescue => e
     flash[:error] = 'Ops! There was a problem saving your changes!'
-    redirect_to root_path
+    redirect_to action: :edit
   end
 
   def delete
