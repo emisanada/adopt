@@ -28,8 +28,8 @@
               <li><%= link_to fa_icon("sign-out", text: "Logout"), logout_path %></li>
             <% else %>
               <li><%= link_to fa_icon("sign-in", text: "Login"), login_path %></li>
+              <li><%= link_to fa_icon("user-plus", text: "Signup"), new_user_path %></li>
             <% end %>
-            <li><%= link_to fa_icon("user-plus", text: "Signup"), new_user_path %></li>
             <li><%= link_to fa_icon("users", text: "List users"), users_path %></li>
           </ul>
         </nav>
