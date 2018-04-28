@@ -5,3 +5,32 @@
   </h1>
 </div>
 <!-- END PAGE HEADER-->
+
+<%= form_for :pet, url: { action: "create" } do |f| %>
+  <div class="form-group">
+    <%= f.label "Name" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Breed" %>
+    <%= f.text_field :breed, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Age" %>
+    <%= f.text_field :age, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Location" %>
+    <%= f.text_field :location, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "About" %>
+    <%= f.text_area :about, class: "form-control" %>
+  </div>
+
+  <%= f.button "Save", id: "create-pet-btn", class: "btn" %>
+<% end %>

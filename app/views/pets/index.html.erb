@@ -5,3 +5,20 @@
   </h1>
 </div>
 <!-- END PAGE HEADER-->
+
+<% @pets.each do |pet| %>
+  <div class="users-list">
+    <div class="user-card">
+      <h2><%= pet.name %></h2>
+      <p class="item"><strong>Age</strong>: <%= pet.age %></p>
+      <p class="item"><strong>Breed</strong>: <%= pet.breed %></p>
+      <p class="item"><strong>Status</strong>: <%= pet.status ? "Adopted!!!" : "Waiting for a home" %></p>
+      <p class="item"><strong>Contact</strong>: <%= pet.user.email %></p>
+      <p class="item"><strong>Location</strong>: <%= pet.location %></p>
+      <p class="item"><strong>About</strong>: <%= pet.about %></p>
+    </div>
+  </div>
+<% end %>
+<% if @pets.blank? %>
+  <p>Nenhum usuário</p>
+<% end %>
