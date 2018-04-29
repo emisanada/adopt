@@ -190,25 +190,28 @@ textarea:focus {
 /* MAIN */
 #main {
   width: 100%;
-  padding-left: 15px;
 }
 
 /* FOOTER */
 #footer {
  position: fixed;
- left: 0;
  bottom: 0;
- height: 30px;
- padding: 10px 0 0 15px;
+ padding: 5px 10px 0 0;
  width: 100%;
  background: $main_background_color;
  color: $menu_font_color;
- font-size: 10pt;
+ font-size: 8pt;
  text-transform: uppercase;
  letter-spacing: 0.2em;
+ font-weight: 800;
+ text-align: right;
  a {
    color: $body_font_color;
    text-decoration: none;
+ }
+ p {
+   padding-right: 100px;
+   margin-right: 100px;
  }
 }
 
@@ -232,7 +235,7 @@ textarea:focus {
 /* ALERTS AND NOTIFICATIONS */
 .alert {
   padding: 7px 15px;
-  margin-bottom: 10px;
+  margin: 0 15px 10px 15px;
   border: 1px solid transparent;
   border-radius: 6px;
   font-family: $header_font;
@@ -328,7 +331,7 @@ textarea:focus {
 
 .center-text {
   text-align: center;
-  clear:both;
+  clear: both;
 }
 
 .center-alignment {
