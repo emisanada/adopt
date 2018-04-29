@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users
 
   get 'sessions/login', to: 'sessions#login', as: 'login'
+  post 'sessions/login', to: 'sessions#login', as: 'login_attempt'
   get 'sessions/logout', to: 'sessions#logout', as: 'logout'
-  post 'sessions/login_attempt', to: 'sessions#login_attempt', as: 'login_attempt'
 
 end

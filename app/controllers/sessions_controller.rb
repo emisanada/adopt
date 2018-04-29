@@ -1,9 +1,9 @@
 class SessionsController < ApplicationController
 
-  before_action :authenticate_user, except: [:index, :login, :login_attempt, :logout]
-  before_action :save_login_state, only: [:index, :login, :login_attempt]
+  before_action :authenticate_user, except: [:index, :login, :logout]
+  before_action :save_login_state, only: [:index, :login]
 
-  def login_attempt
+  def login
     authorized_user = User.authenticate(params[:username],params[:login_password])
     if authorized_user
       session[:user_id] = authorized_user.id
@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       redirect_to root_path
     else
       flash[:error] = 'Invalid Username or Password'
-      render 'login'
+      render login_path
     end
   end
 
