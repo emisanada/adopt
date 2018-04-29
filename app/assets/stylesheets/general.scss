@@ -19,6 +19,7 @@ header, footer, menu, nav, section {
 body {
   line-height: 1;
   width: 90%;
+  padding-top: 4.6em;
 }
 
 ol, ul {
@@ -123,11 +124,6 @@ textarea:focus {
 }
 
 /* HEADER */
-
-body {
-  padding-top: 4.5em;
-}
-
 #header {
   display: -moz-flex;
   display: -webkit-flex;
@@ -135,9 +131,10 @@ body {
   display: flex;
   background-color: $main_background_color;
   color: $menu_font_color;
-  border-bottom: solid 1px $border_color;
+  font-size: 15pt;
   height: 4.2em;
   line-height: 4.2em;
+  height: 70px;
   position: fixed;
   top: 0;
   width: 100%;
@@ -162,12 +159,9 @@ body {
     -webkit-flex: 1;
     -ms-flex: 1;
     flex: 1;
-    border-left: solid 1px $border_color;
-    margin-left: 1.5em;
     padding-left: 1.5em;
     ul li {
-      border-left: solid 1px $border_color;
-      margin-left: 1em;
+      margin-left: 1.3em;
       padding-left: 1em;
       &:first-child {
         border-left: 0;
@@ -268,4 +262,51 @@ body {
   &.alert-link {
     font-weight: bold;
   }
+}
+
+/* SHADOW EFFECT */
+.long-shadow {
+  overflow: hidden;
+  text-shadow: $text_shadow_color 1px 1px,
+  $text_shadow_color 2px 2px,
+  $text_shadow_color 3px 3px,
+  $text_shadow_color 4px 4px,
+  $text_shadow_color 5px 5px,
+  $text_shadow_color 6px 6px,
+  $text_shadow_color 7px 7px,
+  $text_shadow_color 8px 8px,
+  $text_shadow_color 9px 9px,
+  $text_shadow_color 10px 10px,
+  $text_shadow_color 11px 11px,
+  $text_shadow_color 12px 12px,
+  $text_shadow_color 13px 13px,
+  $text_shadow_color 14px 14px,
+  $text_shadow_color 15px 15px,
+  $text_shadow_color 16px 16px,
+  $text_shadow_color 17px 17px,
+  $text_shadow_color 18px 18px,
+  $text_shadow_color 19px 19px,
+  $text_shadow_color 20px 20px,
+  $text_shadow_color 21px 21px,
+  $text_shadow_color 22px 22px,
+  $text_shadow_color 23px 23px,
+  $text_shadow_color 24px 24px,
+  $text_shadow_color 25px 25px,
+  $text_shadow_color 26px 26px,
+  $text_shadow_color 27px 27px,
+  $text_shadow_color 28px 28px,
+  $text_shadow_color 29px 29px,
+  $text_shadow_color 30px 30px,
+  $text_shadow_color 31px 31px,
+  $text_shadow_color 32px 32px,
+  $text_shadow_color 33px 33px,
+  $text_shadow_color 34px 34px,
+  $text_shadow_color 35px 35px,
+  $text_shadow_color 36px 36px,
+  $text_shadow_color 37px 37px,
+  $text_shadow_color 38px 38px,
+  $text_shadow_color 39px 39px,
+  $text_shadow_color 40px 40px,
+  $text_shadow_color 41px 41px,
+  $text_shadow_color 42px 42px;
 }
