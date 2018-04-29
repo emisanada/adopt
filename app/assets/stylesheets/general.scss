@@ -18,8 +18,8 @@ header, footer, menu, nav, section {
 
 body {
   line-height: 1;
-  width: 90%;
-  padding-top: 4.6em;
+  width: 100%;
+  padding-top: 4.5em;
 }
 
 ol, ul {
@@ -124,6 +124,27 @@ textarea:focus {
 }
 
 /* HEADER */
+.logo-header {
+  float: left;
+  clear: none;
+  overflow: visible;
+  margin: auto;
+}
+
+.left-header {
+  margin-left: 0.8em;
+  float: left;
+  clear: none;
+  width: 43.5%;
+}
+
+.right-header {
+  margin-left: 1em;
+  float: left;
+  clear: none;
+  width: 43.5%;
+}
+
 #header {
   display: -moz-flex;
   display: -webkit-flex;
@@ -309,4 +330,21 @@ textarea:focus {
   $text_shadow_color 40px 40px,
   $text_shadow_color 41px 41px,
   $text_shadow_color 42px 42px;
+}
+
+.center-text {
+  text-align: center;
+  clear:both;
+}
+
+.center-alignment {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+.content {
+  margin-top: 1em;
 }

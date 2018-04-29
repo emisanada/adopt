@@ -1,12 +1,13 @@
 <!-- BEGIN PAGE HEADER-->
-<div class="top-section">
+<div class="top-section center-text">
   <h1>
     Edit user
   </h1>
 </div>
 <!-- END PAGE HEADER-->
 
-<%= form_for :user, url: { action: "update" }, method: :PUT do |f| %>
+<div class="center-alignment center-text">
+  <%= form_for :user, url: { action: "update" }, method: :PUT do |f| %>
   <div class="form-group">
     <%= f.label "Name" %>
     <%= f.text_field :name, class: "form-control" %>
@@ -28,4 +29,5 @@
   </div>
 
   <%= f.button "Save", id: "save-btn", class: "btn" %>
-<% end %>
+  <% end %>
+</div>

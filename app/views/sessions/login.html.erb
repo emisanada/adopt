@@ -1,11 +1,12 @@
 <!-- BEGIN PAGE HEADER-->
-<div class="top-section">
+<div class="top-section center-text">
   <h1>
     Welcome back!
   </h1>
 <!-- END PAGE HEADER-->
 
-<%= form_tag(action: 'login_attempt') do %>
+<div class="center-alignment center-text">
+  <%= form_tag(action: 'login_attempt') do %>
   <div class="form-group">
     <%= label_tag "Username" %>
     <%= text_field_tag :username %>
@@ -17,6 +18,5 @@
   </div>
 
   <%= submit_tag("Login", class: "btn") %>
-<% end %>
-
+  <% end %>
 </div>

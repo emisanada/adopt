@@ -1,12 +1,13 @@
 <!-- BEGIN PAGE HEADER-->
-<div class="top-section">
+<div class="top-section center-text">
   <h1>
     Add a new pet for adoption
   </h1>
 </div>
 <!-- END PAGE HEADER-->
 
-<%= form_for :pet, url: { action: "create" } do |f| %>
+<div class="center-text center-alignment">
+  <%= form_for :pet, url: { action: "create" } do |f| %>
   <div class="form-group">
     <%= f.label "Name" %>
     <%= f.text_field :name, class: "form-control" %>
@@ -33,4 +34,5 @@
   </div>
 
   <%= f.button "Save", id: "create-pet-btn", class: "btn" %>
-<% end %>
+  <% end %>
+</div>

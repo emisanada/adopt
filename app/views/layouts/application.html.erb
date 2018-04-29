@@ -16,13 +16,19 @@
 
       <!-- Header -->
       <header id="header">
-        <%= link_to root_path do %>
-          <img src="/images/Logo2.png" alt="Logo" height="80px" style="margin-top: 5px; margin-left: 10px;" />
-        <% end %>
-        <nav class="links long-shadow">
+        <nav class="links long-shadow left-header">
           <ul>
             <li><%= link_to fa_icon("plus", text: "Add pet for adoption"), new_pet_path %></li>
             <li><%= link_to fa_icon("paw", text: "Check out pets"), pets_path %></li>
+          </ul>
+        </nav>
+        <div class="logo-header">
+          <%= link_to root_path do %>
+            <img src="/images/Logo2.png" alt="Logo" height="90px" style="margin-top: 5px; margin-left: 10px; overflow: visible;" />
+          <% end %>
+        </div>
+        <nav class="links long-shadow right-header">
+          <ul>
             <% if @current_user.present? %>
               <li><%= link_to fa_icon("user", text: @current_user.name), edit_user_path(@current_user.id) %></li>
               <li><%= link_to fa_icon("sign-out", text: "Logout"), logout_path %></li>
@@ -35,27 +41,30 @@
         </nav>
       </header>
 
-      <!-- Warnings and Notices -->
-      <% if flash[:error].present? && flash[:error].kind_of?(Array) %>
-        <div class="alert alert-error" id="error">
-          <% flash[:error].each do |error| %>
-            <p><%= error.to_s %></p>
-          <% end %>
+      <div class="content">
+        <!-- Warnings and Notices -->
+        <% if flash[:error].present? && flash[:error].kind_of?(Array) %>
+          <div class="alert alert-error" id="error">
+            <% flash[:error].each do |error| %>
+              <p><%= error.to_s %></p>
+            <% end %>
+          </div>
+        <% end %>
+
+        <% if flash[:error].present? && flash[:error].kind_of?(String) %>
+          <div class="alert alert-error" id="error"><%= flash[:error] %></div>
+        <% end %>
+
+        <% if flash[:notice] %>
+          <div class="alert alert-success" id="notice"> <%= flash[:notice] %></div>
+        <% end %>
+
+        <!-- Main -->
+        <div id="main">
+          <%= yield %>
         </div>
-      <% end %>
-
-      <% if flash[:error].present? && flash[:error].kind_of?(String) %>
-        <div class="alert alert-error" id="error"><%= flash[:error] %></div>
-      <% end %>
-
-      <% if flash[:notice] %>
-        <div class="alert alert-success" id="notice"> <%= flash[:notice] %></div>
-      <% end %>
-
-      <!-- Main -->
-      <div id="main">
-        <%= yield %>
       </div>
+
     </div>
 
   </body>
