@@ -16,6 +16,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bcrypt', require: 'bcrypt'
 
 group :development, :test do
+  gem 'rspec-rails', '~> 3.7'
   gem 'pry'
 end
 
