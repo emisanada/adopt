@@ -5,12 +5,13 @@ class User < ActiveRecord::Base
   after_save :clear_password
 
   EMAIL_REGEX = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i
-  PASSWORD_FORMAT = /\A(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[[:^alnum:]])/x
+  HARD_PASSWORD = /\A(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[[:^alnum:]])/x
+  EASY_PASSWORD = /\A(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/x
 
   validates :password,
     presence: true,
-    length: { in: 8..25 },
-    format: { with: PASSWORD_FORMAT },
+    length: { in: 6..25 },
+    format: { with: EASY_PASSWORD },
     confirmation: true,
     on: :create
   validates :email,

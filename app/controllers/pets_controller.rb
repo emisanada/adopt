@@ -1,6 +1,7 @@
 class PetsController < ApplicationController
 
   before_action :check_user, only: [:new, :create, :create, :update, :delete]
+  before_action :check_owner, only: [:edit, :update, :destroy]
 
   def index
     @pets = Pet.all
@@ -61,5 +62,13 @@ class PetsController < ApplicationController
 
     def pet_update_params
       params.require(:pet).permit(:name, :breed, :age, :location, :about, :status)
+    end
+
+    def check_owner
+      pet = Pet.find(params[:id])
+      if !(@current_user.id.to_i === pet.user_id.to_i)
+        flash[:error] = "Restricted area"
+        redirect_to root_path
+      end
     end
 end

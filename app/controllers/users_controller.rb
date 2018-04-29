@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user, only: [:edit, :update, :destroy], notice: 'You must sign in first!'
+  before_action :check_current_user, only: [:edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -51,6 +53,13 @@ class UsersController < ApplicationController
 
     def user_update_params
       params.require(:user).permit(:name, :email, :location, :about)
+    end
+
+    def check_current_user
+      if !(@current_user.id.to_i === params[:id].to_i)
+        flash[:error] = "Restricted area"
+        redirect_to root_path
+      end
     end
 
 end
