@@ -45,7 +45,7 @@ class PetsController < ApplicationController
   def update
     pet = Pet.find(params[:id]).update_attributes(pet_update_params)
     flash[:notice] = 'Your changes were saved! Hurray!'
-    redirect_to root_path
+    redirect_to action: :show
   rescue => e
     flash[:error] = 'Ops! There was a problem saving your changes!'
     redirect_to action: :edit

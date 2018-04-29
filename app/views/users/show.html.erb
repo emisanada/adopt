@@ -1,7 +1,17 @@
 <!-- BEGIN PAGE HEADER-->
 <div class="top-section center-text">
   <h1>
-    User info
+    <%= @user.name %>
   </h1>
 </div>
 <!-- END PAGE HEADER-->
+
+<div class="center-text">
+  <p class="item"><strong>E-mail (for contact)</strong>: <%= @user.email %></p>
+  <p class="item"><strong>Location</strong>: <%= @user.location %></p>
+  <p class="item"><strong>Username</strong>: <%= @user.username %></p>
+  <p class="item"><strong>About</strong>: <%= @user.about %></p>
+  <div class="">
+    <%= link_to fa_icon("pencil", text: "Edit"), edit_user_path(@user.id) %>
+  </divl
+</div>
