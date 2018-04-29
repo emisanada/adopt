@@ -16,6 +16,10 @@
       <p class="item"><strong>Contact</strong>: <%= pet.user.email %></p>
       <p class="item"><strong>Location</strong>: <%= pet.location %></p>
       <p class="item"><strong>About</strong>: <%= pet.about %></p>
+      <div class="">
+        <%= link_to fa_icon("pencil", text: "Edit"), edit_pet_path(pet.id) %>
+        <%= link_to fa_icon("paw", text: "Show"), pet_path(pet.id)%>
+      </div>
     </div>
   </div>
 <% end %>

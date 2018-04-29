@@ -10,6 +10,7 @@ class PetsController < ApplicationController
   end
 
   def show
+    @pet = Pet.find(params[:id])
   end
 
   def new
@@ -38,9 +39,16 @@ class PetsController < ApplicationController
   end
 
   def edit
+    @pet = Pet.find(params[:id])
   end
 
   def update
+    pet = Pet.find(params[:id]).update_attributes(pet_update_params)
+    flash[:notice] = 'Your changes were saved! Hurray!'
+    redirect_to root_path
+  rescue => e
+    flash[:error] = 'Ops! There was a problem saving your changes!'
+    redirect_to action: :edit
   end
 
   def delete
@@ -49,5 +57,9 @@ class PetsController < ApplicationController
   private
     def pet_params
       params.require(:pet).permit(:name, :breed, :age, :location, :about, :status, :user_id)
+    end
+
+    def pet_update_params
+      params.require(:pet).permit(:name, :breed, :age, :location, :about, :status)
     end
 end
