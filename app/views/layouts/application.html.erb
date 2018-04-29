@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <link href="https://fonts.googleapis.com/css?family=Gamja+Flower" rel="stylesheet">
     <%= csrf_meta_tags %>
   </head>
 
@@ -30,7 +31,7 @@
         <nav class="links long-shadow right-header">
           <ul>
             <% if @current_user.present? %>
-              <li><%= link_to fa_icon("user", text: @current_user.name), edit_user_path(@current_user.id) %></li>
+              <li><%= link_to fa_icon("user", text: @current_user.username), edit_user_path(@current_user.id) %></li>
               <li><%= link_to fa_icon("sign-out", text: "Logout"), logout_path %></li>
             <% else %>
               <li><%= link_to fa_icon("sign-in", text: "Login"), login_path %></li>
