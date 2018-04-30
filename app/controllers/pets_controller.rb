@@ -20,12 +20,14 @@ class PetsController < ApplicationController
     params[:pet][:status] = false
     @pet = Pet.new(pet_params)
     if @pet.save
+      Rails.logger.info "Pet #{@pet.name} was created successfully, pet_id: #{@pet.id}"
       flash[:notice] = 'Pet listed for adoption successfully!'
       redirect_to action: :index
     else
       render 'new', status: 400
     end
   rescue => e
+    Rails.logger.error "Pet creation failed! #{e.message} - #{e.bactrace.join("\n\t")}"
     flash[:error] = 'Ops! There was a problem on your pet form!'
     redirect_to action: :new
   end
@@ -37,12 +39,14 @@ class PetsController < ApplicationController
   def update
     @pet = Pet.find(params[:id])
     if @pet.update_attributes(pet_update_params)
+      Rails.logger.info "Pet #{@pet.name} was updated successfully, pet_id: #{@pet.id}"
       flash[:notice] = 'Your changes were saved! Whoof!'
       redirect_to action: :show
     else
       render 'edit', status: 400
     end
   rescue => e
+    Rails.logger.error "Pet update failed, pet_id: #{params[:id]}! #{e.message} - #{e.bactrace.join("\n\t")}"
     flash[:error] = 'Ops! There was a problem saving your changes!'
     redirect_to action: :edit
   end
@@ -50,7 +54,13 @@ class PetsController < ApplicationController
   def destroy
     Pet.find(params[:id]).destroy
     @pet = User.all
+    Rails.logger.info "Pet pet_id: #{params[:id]} deleted successfully!"
+    flash[:notice] = 'Your changes were saved! Whoof!'
     redirect_to root_path
+  rescue => e
+    Rails.logger.error "Pet delete failed, pet_id: #{params[:id]}! #{e.message} - #{e.bactrace.join("\n\t")}"
+    flash[:error] = 'Ops! There was a problem deleting that pet info!'
+    redirect_to action: :edit
   end
 
   private
