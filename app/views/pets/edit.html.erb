@@ -34,6 +34,13 @@
       <%= f.text_area :about, class: "form-control" %>
     </div>
 
+    <% if pet_owner?(@current_user, @pet) %>
+      <div class="form-group">
+        <%= f.label "Adopted?" %>
+        <%= f.check_box :status, class: "form-control" %>
+      </div>
+    <% end %>
+
     <%= f.button "Save", id: "save-pet-btn", class: "btn" %>
   <% end %>
 </div>
