@@ -11,25 +11,22 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
   end
 
+  def new
+    @pet = Pet.new
+  end
+
   def create
     params[:pet][:user_id] = current_user.id
     params[:pet][:status] = false
-    pet = Pet.create(pet_params)
-    if pet.errors.any?
-      pets_errors = []
-      pet.errors.full_messages.each do |message|
-        pets_errors << message
-      end
+    @pet = Pet.new(pet_params)
+    if @pet.save
+      flash[:notice] = 'Pet listed for adoption successfully!'
+      redirect_to action: :index
+    else
+      render 'new'
     end
-    pet.save!
-    flash[:notice] = 'Pet listed for adoption successfully!'
-    redirect_to action: :index
   rescue => e
     flash[:error] = 'Ops! There was a problem on your pet form!'
-    if pets_errors.present?
-      flash[:error] = [flash[:error]] << pets_errors
-      flash[:error].flatten!
-    end
     redirect_to action: :new
   end
 

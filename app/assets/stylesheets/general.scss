@@ -65,7 +65,7 @@ h3 {
 
 form {
   margin: 0 0 2em 0;
-
+  width: 30em;
   input:disabled, textarea:disabled {
     color: $disabled_font_color;
     background-color: $disabled_background_color;
@@ -93,10 +93,13 @@ textarea {
   border: none;
   border-radius: 0;
   color: inherit;
-  display: block;
   outline: 0;
   padding: 0 1em;
   text-decoration: none;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  margin: auto;
 }
 
 input[type="text"]:invalid,
@@ -106,6 +109,10 @@ input[type="tel"]:invalid,
 select:invalid,
 textarea:invalid {
   box-shadow: none;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  margin: auto;
 }
 
 input[type="text"]:focus,
@@ -115,6 +122,10 @@ input[type="tel"]:focus,
 select:focus,
 textarea:focus {
   border: solid 1.5px $border_color;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  margin: auto;
 }
 
 /* HEADER */
@@ -218,7 +229,7 @@ textarea:focus {
 /* BUTTONS */
 .btn {
   margin: 10px 0;
-  padding: 10px;
+  padding: 6px 10px;
   font-family: $header_font;
   font-size: 11pt;
   font-weight: 700;
@@ -282,6 +293,12 @@ textarea:focus {
   &.alert-link {
     font-weight: bold;
   }
+}
+
+#error_messages {
+  color: $error_color;
+  font-family: $body_font;
+  font-size: 14px;
 }
 
 /* SHADOW EFFECT */

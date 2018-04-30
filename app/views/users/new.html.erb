@@ -7,7 +7,9 @@
 <!-- END PAGE HEADER-->
 
 <div class="center-alignment center-text">
-  <%= form_for :user, url: { action: "create" } do |f| %>
+  <%= form_for @user, url: { action: "create" } do |f| %>
+    <%= render 'shared/error_messages', object: @user %>
+
     <div class="form-group">
       <%= f.label "Name" %>
       <%= f.text_field :name, class: "form-control" %>
@@ -38,6 +40,6 @@
       <%= f.password_field :password_confirmation, class: "form-control" %>
     </div>
 
-    <%= f.button "Register", id: "create-btn", class: "btn" %>
+    <%= f.button "Register", id: "create-user-btn", class: "btn" %>
   <% end %>
 </div>
