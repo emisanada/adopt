@@ -14,7 +14,7 @@
       <p class="item"><strong>Location</strong>: <%= user.location %></p>
       <p class="item"><strong>About</strong>: <%= user.about %></p>
       <div class="">
-        <% if @current_user.present? && @current_user.admin %>
+        <% if user_admin?(@current_user) %>
           <%= link_to fa_icon("pencil", text: "Edit"), edit_user_path(user.id), class: "btn" %>
         <% end %>
         <%= link_to fa_icon("paw", text: "Show"), user_path(user.id), class: "btn"%>
