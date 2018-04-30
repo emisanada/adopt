@@ -17,8 +17,10 @@
       <p class="item"><strong>Location</strong>: <%= pet.location %></p>
       <p class="item"><strong>About</strong>: <%= pet.about %></p>
       <div class="">
-        <%= link_to fa_icon("pencil", text: "Edit"), edit_pet_path(pet.id) %>
-        <%= link_to fa_icon("paw", text: "Show"), pet_path(pet.id)%>
+        <% if @current_user.present? && pet.user_id == @current_user.id %>
+          <%= link_to fa_icon("pencil", text: "Edit"), edit_pet_path(pet.id), class: "btn" %>
+        <% end %>
+        <%= link_to fa_icon("paw", text: "Show"), pet_path(pet.id), class: "btn"%>
       </div>
     </div>
   </div>

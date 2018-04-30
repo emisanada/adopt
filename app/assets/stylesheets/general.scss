@@ -227,6 +227,8 @@ textarea:focus {
   color: $button_font_color;
   background-color: $button_background_color;
   box-shadow: none;
+  text-decoration: none;
+  border-radius: 5px;
   &:hover {
     background-color: $background_color_optional;
   }
