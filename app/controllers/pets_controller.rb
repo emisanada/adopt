@@ -17,7 +17,7 @@ class PetsController < ApplicationController
 
   def create
     params[:pet][:user_id] = current_user.id
-    params[:pet][:status] = false
+    params[:pet][:adopted] = false
     @pet = Pet.new(pet_params)
     if @pet.save
       Rails.logger.info "Pet #{@pet.name} was created successfully, pet_id: #{@pet.id}"
@@ -65,11 +65,11 @@ class PetsController < ApplicationController
 
   private
     def pet_params
-      params.require(:pet).permit(:name, :breed, :age, :location, :about, :status, :user_id)
+      params.require(:pet).permit(:name, :species, :breed, :age, :location, :about, :adopted, :user_id)
     end
 
     def pet_update_params
-      params.require(:pet).permit(:name, :breed, :age, :location, :about, :status)
+      params.require(:pet).permit(:name, :species, :breed, :age, :location, :about, :adopted)
     end
 
     def check_owner

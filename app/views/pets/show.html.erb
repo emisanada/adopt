@@ -8,8 +8,9 @@
 
 <div class="center-text">
   <p class="item"><strong>Age</strong>: <%= @pet.age %></p>
+  <p class="item"><strong>Species</strong>: <%= @pet.species %></p>
   <p class="item"><strong>Breed</strong>: <%= @pet.breed %></p>
-  <p class="item"><strong>Status</strong>: <%= @pet.status ? "Adopted!!!" : "Waiting for a home" %></p>
+  <p class="item"><strong>Status</strong>: <%= @pet.adopted ? "Yes!!!" : "Waiting for a home" %></p>
   <p class="item"><strong>Contact</strong>: <%= @pet.user.email %></p>
   <p class="item"><strong>Location</strong>: <%= @pet.location %></p>
   <p class="item"><strong>About</strong>: <%= @pet.about %></p>

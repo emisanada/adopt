@@ -15,11 +15,12 @@ describe PetsController do
     {
       pet: {
         name: 'Pikachu',
+        species: 'Pokemon',
         breed: 'Mouse Pokemon',
         age: '3 years',
         location: 'Pallet Town',
-        status: false,
         about: 'Eletric type pokemon ready to find its trainer!',
+        adopted: false,
         user_id: 1
       }
     }
@@ -50,6 +51,16 @@ describe PetsController do
     context 'when name is too short' do
       before do
         pet_params[:pet][:name] = 'a'
+        post :create, params: pet_params
+      end
+      it { expect(response.status).to eq 400 }
+      it { expect(flash[:notice]).not_to be_present }
+      it { expect(response).to render_template :new }
+    end
+
+    context 'when species is blank' do
+      before do
+        pet_params[:pet][:species] = ''
         post :create, params: pet_params
       end
       it { expect(response.status).to eq 400 }
