@@ -329,6 +329,7 @@ textarea:focus {
   $text_shadow_color 42px 42px;
 
   li:hover {
+    cursor: pointer;
     color: $body_font_color_optional;
     text-shadow: $text_shadow_hover_color 1px 1px,
     $text_shadow_hover_color 2px 2px,

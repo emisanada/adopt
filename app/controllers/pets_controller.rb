@@ -18,7 +18,7 @@ class PetsController < ApplicationController
   end
 
   def create
-    params[:pet][:user_id] = @current_user.id
+    params[:pet][:user_id] = current_user.id
     params[:pet][:status] = false
     pet = Pet.create(pet_params)
     if pet.errors.any?
@@ -66,8 +66,8 @@ class PetsController < ApplicationController
 
     def check_owner
       pet = Pet.find(params[:id])
-      if !(@current_user.id.to_i === pet.user_id.to_i)
-        flash[:error] = "Restricted area"
+      if current_user.blank? || !current_user.id.to_i === pet.user_id.to_i
+        flash[:error] = "Sorry! You don't have access to this page!"
         redirect_to root_path
       end
     end

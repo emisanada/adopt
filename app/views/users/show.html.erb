@@ -13,5 +13,12 @@
   <p class="item"><strong>About</strong>: <%= @user.about %></p>
   <div class="">
     <%= link_to fa_icon("pencil", text: "Edit"), edit_user_path(@user.id) %>
-  </divl
+  </div>
+</div>
+
+<div class="center-text">
+  <h2>Pets listed for adoption</h2>
+  <% @user.pets.each do |pet| %>
+    <p><%= pet.name %></p>
+  <% end %>
 </div>
