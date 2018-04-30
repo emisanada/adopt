@@ -23,7 +23,7 @@ class PetsController < ApplicationController
       flash[:notice] = 'Pet listed for adoption successfully!'
       redirect_to action: :index
     else
-      render 'new'
+      render 'new', status: 400
     end
   rescue => e
     flash[:error] = 'Ops! There was a problem on your pet form!'
@@ -57,7 +57,7 @@ class PetsController < ApplicationController
 
     def check_owner
       pet = Pet.find(params[:id])
-      if current_user.blank? || !current_user.id.to_i === pet.user_id.to_i
+      if current_user.blank? || current_user.id.to_i != pet.user_id.to_i
         flash[:error] = "Sorry! You don't have access to this page!"
         redirect_to root_path
       end

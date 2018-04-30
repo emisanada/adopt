@@ -40,11 +40,9 @@ describe PetsController do
         pet_params[:pet][:name] = ''
         post :create, params: pet_params
       end
-      it { expect(response.status).to eq 302 }
+      it { expect(response.status).to eq 400 }
       it { expect(flash[:notice]).not_to be_present }
-      it { expect(flash[:error]).to be_present }
-      it { expect(flash[:error]).to eq ["Ops! There was a problem on your pet form!", "Name can't be blank", "Name is too short (minimum is 3 characters)"] }
-      it { expect(response).to redirect_to action: :new }
+      it { expect(response).to render_template :new }
     end
 
     context 'when name is too short' do
@@ -52,11 +50,9 @@ describe PetsController do
         pet_params[:pet][:name] = 'a'
         post :create, params: pet_params
       end
-      it { expect(response.status).to eq 302 }
+      it { expect(response.status).to eq 400 }
       it { expect(flash[:notice]).not_to be_present }
-      it { expect(flash[:error]).to be_present }
-      it { expect(flash[:error]).to eq ["Ops! There was a problem on your pet form!", "Name is too short (minimum is 3 characters)"] }
-      it { expect(response).to redirect_to action: :new }
+      it { expect(response).to render_template :new }
     end
 
     context 'when breed is blank' do
@@ -64,11 +60,9 @@ describe PetsController do
         pet_params[:pet][:breed] = ''
         post :create, params: pet_params
       end
-      it { expect(response.status).to eq 302 }
+      it { expect(response.status).to eq 400 }
       it { expect(flash[:notice]).not_to be_present }
-      it { expect(flash[:error]).to be_present }
-      it { expect(flash[:error]).to eq ["Ops! There was a problem on your pet form!", "Breed can't be blank", "Breed is too short (minimum is 3 characters)"] }
-      it { expect(response).to redirect_to action: :new }
+      it { expect(response).to render_template :new }
     end
 
     context 'when location is blank' do
@@ -76,11 +70,9 @@ describe PetsController do
         pet_params[:pet][:location] = ''
         post :create, params: pet_params
       end
-      it { expect(response.status).to eq 302 }
+      it { expect(response.status).to eq 400 }
       it { expect(flash[:notice]).not_to be_present }
-      it { expect(flash[:error]).to be_present }
-      it { expect(flash[:error]).to eq ["Ops! There was a problem on your pet form!", "Location can't be blank", "Location is too short (minimum is 3 characters)"] }
-      it { expect(response).to redirect_to action: :new }
+      it { expect(response).to render_template :new }
     end
 
     context 'when about is blank' do
@@ -88,11 +80,9 @@ describe PetsController do
         pet_params[:pet][:about] = ''
         post :create, params: pet_params
       end
-      it { expect(response.status).to eq 302 }
+      it { expect(response.status).to eq 400 }
       it { expect(flash[:notice]).not_to be_present }
-      it { expect(flash[:error]).to be_present }
-      it { expect(flash[:error]).to eq ["Ops! There was a problem on your pet form!", "About can't be blank", "About is too short (minimum is 3 characters)"] }
-      it { expect(response).to redirect_to action: :new }
+      it { expect(response).to render_template :new }
     end
   end
 end

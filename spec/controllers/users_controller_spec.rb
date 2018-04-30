@@ -33,11 +33,9 @@ describe UsersController do
         user_params[:user][:password] = '123'
         post :create, params: user_params
       end
-      it { expect(response.status).to eq 302 }
+      it { expect(response.status).to eq 400 }
       it { expect(flash[:notice]).not_to be_present }
-      it { expect(flash[:error]).to be_present }
-      it { expect(flash[:error]).to eq ["Ops! There was a problem on your signup!", "Password is too short (minimum is 6 characters)", "Password is invalid", "Password confirmation doesn't match Password"] }
-      it { expect(response).to redirect_to action: :new }
+      it { expect(response).to render_template :new }
     end
 
     context 'when username is invalid' do
@@ -45,11 +43,9 @@ describe UsersController do
         user_params[:user][:username] = 'tr'
         post :create, params: user_params
       end
-      it { expect(response.status).to eq 302 }
+      it { expect(response.status).to eq 400 }
       it { expect(flash[:notice]).not_to be_present }
-      it { expect(flash[:error]).to be_present }
-      it { expect(flash[:error]).to eq ["Ops! There was a problem on your signup!", "Username is too short (minimum is 3 characters)"] }
-      it { expect(response).to redirect_to action: :new }
+      it { expect(response).to render_template :new }
     end
 
     context 'when name is blank' do
@@ -57,11 +53,9 @@ describe UsersController do
         user_params[:user][:name] = ''
         post :create, params: user_params
       end
-      it { expect(response.status).to eq 302 }
+      it { expect(response.status).to eq 400 }
       it { expect(flash[:notice]).not_to be_present }
-      it { expect(flash[:error]).to be_present }
-      it { expect(flash[:error]).to eq ["Ops! There was a problem on your signup!", "Name can't be blank", "Name is too short (minimum is 3 characters)"] }
-      it { expect(response).to redirect_to action: :new }
+      it { expect(response).to render_template :new }
     end
 
     context 'when location is blank' do
@@ -69,11 +63,9 @@ describe UsersController do
         user_params[:user][:location] = ''
         post :create, params: user_params
       end
-      it { expect(response.status).to eq 302 }
+      it { expect(response.status).to eq 400 }
       it { expect(flash[:notice]).not_to be_present }
-      it { expect(flash[:error]).to be_present }
-      it { expect(flash[:error]).to eq ["Ops! There was a problem on your signup!", "Location can't be blank", "Location is too short (minimum is 3 characters)"] }
-      it { expect(response).to redirect_to action: :new }
+      it { expect(response).to render_template :new }
     end
 
     context 'when email is invalid' do
@@ -81,11 +73,9 @@ describe UsersController do
         user_params[:user][:email] = 'help'
         post :create, params: user_params
       end
-      it { expect(response.status).to eq 302 }
+      it { expect(response.status).to eq 400 }
       it { expect(flash[:notice]).not_to be_present }
-      it { expect(flash[:error]).to be_present }
-      it { expect(flash[:error]).to eq ["Ops! There was a problem on your signup!", "Email is invalid"] }
-      it { expect(response).to redirect_to action: :new }
+      it { expect(response).to render_template :new }
     end
   end
 end

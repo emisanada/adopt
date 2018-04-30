@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'You signed up successfully!'
       redirect_to root_path
     else
-      render 'new'
+      render 'new', status: 400
     end
   rescue => e
     flash[:error] = 'Ops! There was a problem on your signup!'
