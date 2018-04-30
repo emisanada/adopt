@@ -23,9 +23,11 @@ class User < ActiveRecord::Base
     uniqueness: true,
     length: { in: 3..25 }
   validates :name,
-    presence: true
+    presence: true,
+    length: { in: 3..255 }
   validates :location,
-    presence: true
+    presence: true,
+    length: { in: 3..255 }
 
   has_many :pets
 

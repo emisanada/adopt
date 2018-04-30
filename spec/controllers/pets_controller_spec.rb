@@ -43,7 +43,19 @@ describe PetsController do
       it { expect(response.status).to eq 302 }
       it { expect(flash[:notice]).not_to be_present }
       it { expect(flash[:error]).to be_present }
-      it { expect(flash[:error]).to eq ["Ops! There was a problem on your pet form!", "Name can't be blank"] }
+      it { expect(flash[:error]).to eq ["Ops! There was a problem on your pet form!", "Name can't be blank", "Name is too short (minimum is 3 characters)"] }
+      it { expect(response).to redirect_to action: :new }
+    end
+
+    context 'when name is too short' do
+      before do
+        pet_params[:pet][:name] = 'a'
+        post :create, params: pet_params
+      end
+      it { expect(response.status).to eq 302 }
+      it { expect(flash[:notice]).not_to be_present }
+      it { expect(flash[:error]).to be_present }
+      it { expect(flash[:error]).to eq ["Ops! There was a problem on your pet form!", "Name is too short (minimum is 3 characters)"] }
       it { expect(response).to redirect_to action: :new }
     end
 
@@ -55,7 +67,7 @@ describe PetsController do
       it { expect(response.status).to eq 302 }
       it { expect(flash[:notice]).not_to be_present }
       it { expect(flash[:error]).to be_present }
-      it { expect(flash[:error]).to eq ["Ops! There was a problem on your pet form!", "Breed can't be blank"] }
+      it { expect(flash[:error]).to eq ["Ops! There was a problem on your pet form!", "Breed can't be blank", "Breed is too short (minimum is 3 characters)"] }
       it { expect(response).to redirect_to action: :new }
     end
 
@@ -67,7 +79,7 @@ describe PetsController do
       it { expect(response.status).to eq 302 }
       it { expect(flash[:notice]).not_to be_present }
       it { expect(flash[:error]).to be_present }
-      it { expect(flash[:error]).to eq ["Ops! There was a problem on your pet form!", "Location can't be blank"] }
+      it { expect(flash[:error]).to eq ["Ops! There was a problem on your pet form!", "Location can't be blank", "Location is too short (minimum is 3 characters)"] }
       it { expect(response).to redirect_to action: :new }
     end
 
@@ -79,7 +91,7 @@ describe PetsController do
       it { expect(response.status).to eq 302 }
       it { expect(flash[:notice]).not_to be_present }
       it { expect(flash[:error]).to be_present }
-      it { expect(flash[:error]).to eq ["Ops! There was a problem on your pet form!", "About can't be blank"] }
+      it { expect(flash[:error]).to eq ["Ops! There was a problem on your pet form!", "About can't be blank", "About is too short (minimum is 3 characters)"] }
       it { expect(response).to redirect_to action: :new }
     end
   end

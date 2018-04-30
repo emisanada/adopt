@@ -60,7 +60,7 @@ describe UsersController do
       it { expect(response.status).to eq 302 }
       it { expect(flash[:notice]).not_to be_present }
       it { expect(flash[:error]).to be_present }
-      it { expect(flash[:error]).to eq ["Ops! There was a problem on your signup!", "Name can't be blank"] }
+      it { expect(flash[:error]).to eq ["Ops! There was a problem on your signup!", "Name can't be blank", "Name is too short (minimum is 3 characters)"] }
       it { expect(response).to redirect_to action: :new }
     end
 
@@ -72,7 +72,7 @@ describe UsersController do
       it { expect(response.status).to eq 302 }
       it { expect(flash[:notice]).not_to be_present }
       it { expect(flash[:error]).to be_present }
-      it { expect(flash[:error]).to eq ["Ops! There was a problem on your signup!", "Location can't be blank"] }
+      it { expect(flash[:error]).to eq ["Ops! There was a problem on your signup!", "Location can't be blank", "Location is too short (minimum is 3 characters)"] }
       it { expect(response).to redirect_to action: :new }
     end
 
