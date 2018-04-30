@@ -6,13 +6,20 @@
 </div>
 <!-- END PAGE HEADER-->
 
-<% @users.each do |u| %>
+<% @users.each do |user| %>
   <div class="users-list">
     <div class="user-card">
-      <h2><%= u.name %></h2>
-      <p class="item"><strong>Contact</strong>: <%= u.email %></p>
-      <p class="item"><strong>Location</strong>: <%= u.location %></p>
-      <p class="item"><strong>About</strong>: <%= u.about %></p>
+      <h2><%= user.name %></h2>
+      <p class="item"><strong>Contact</strong>: <%= user.email %></p>
+      <p class="item"><strong>Location</strong>: <%= user.location %></p>
+      <p class="item"><strong>About</strong>: <%= user.about %></p>
+      <div class="">
+        <% if @current_user.admin %>
+          <%= link_to fa_icon("pencil", text: "Edit"), edit_user_path(user.id), class: "btn" %>
+        <% end %>
+        <%#= link_to fa_icon("times", text: "Remove"), edit_pet_path(pet.id), class: "btn" %>
+        <%= link_to fa_icon("paw", text: "Show"), user_path(user.id), class: "btn"%>
+      </div>
     </div>
   </div>
 <% end %>

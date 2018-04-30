@@ -53,14 +53,15 @@ class UsersController < ApplicationController
     end
 
     def user_update_params
-      params.require(:user).permit(:name, :email, :location, :about)
+      params.require(:user).permit(:name, :email, :location, :about, :admin)
     end
 
     def check_current_user
-      if current_user.blank? || !current_user.id.to_i === params[:id].to_i
-        flash[:error] = "Restricted area"
-        redirect_to root_path
+      if (current_user.present? && current_user.id.to_i === params[:id].to_i) || current_user.admin
+        return true
       end
+      flash[:error] = "Restricted area! Paws off!"
+      redirect_to root_path
     end
 
 end

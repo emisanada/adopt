@@ -11,14 +11,19 @@
   <p class="item"><strong>Location</strong>: <%= @user.location %></p>
   <p class="item"><strong>Username</strong>: <%= @user.username %></p>
   <p class="item"><strong>About</strong>: <%= @user.about %></p>
+  <% if @user.admin %>
+    <p class="item"><strong>Admin User</strong></p>
+  <% end %>
   <div class="">
     <%= link_to fa_icon("pencil", text: "Edit"), edit_user_path(@user.id) %>
   </div>
 </div>
 
-<div class="center-text">
-  <h2>Pets listed for adoption</h2>
-  <% @user.pets.each do |pet| %>
-    <p><%= pet.name %></p>
-  <% end %>
-</div>
+<% if @user.pets.present? %>
+  <div class="center-text">
+    <h2>Pets listed for adoption</h2>
+    <% @user.pets.each do |pet| %>
+      <p><%= pet.name %></p>
+    <% end %>
+  </div>
+<% end %>
