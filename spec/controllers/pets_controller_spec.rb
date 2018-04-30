@@ -146,7 +146,7 @@ describe PetsController do
       it { expect(response).to redirect_to login_path }
     end
 
-    context 'when not pet owner' do
+    context 'when user is not pet owner or admin' do
       before do
         user.id = 2
         allow_any_instance_of(PetsController).to receive(:check_owner).and_call_original

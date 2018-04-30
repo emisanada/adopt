@@ -47,7 +47,10 @@ class PetsController < ApplicationController
     redirect_to action: :edit
   end
 
-  def delete
+  def destroy
+    Pet.find(params[:id]).destroy
+    @pet = User.all
+    redirect_to root_path
   end
 
   private
@@ -61,9 +64,10 @@ class PetsController < ApplicationController
 
     def check_owner
       pet = Pet.find(params[:id])
-      if current_user.blank? || current_user.id.to_i != pet.user_id.to_i
-        flash[:error] = "Sorry! You don't have access to this page!"
-        redirect_to root_path
+      if current_user.present? && (current_user.admin || current_user.id.to_i == pet.user_id.to_i)
+        return true
       end
+      flash[:error] = "Sorry! You don't have access to this page!"
+      redirect_to root_path
     end
 end

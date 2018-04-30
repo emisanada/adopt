@@ -14,8 +14,9 @@
   <p class="item"><strong>Location</strong>: <%= @pet.location %></p>
   <p class="item"><strong>About</strong>: <%= @pet.about %></p>
   <div class="">
-    <% if @current_user.present? && @pet.id == @current_user.id %>
+    <% if @current_user.present? && (@current_user.admin || @pet.id == @current_user.id) %>
       <%= link_to fa_icon("pencil", text: "Edit"), edit_pet_path(@pet.id), class: "btn" %>
+      <%= link_to fa_icon("times", text: "Delete pet info"), pet_path(@pet.id), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }, class: "btn" %>
     <% end %>
   </div>
 </div>
