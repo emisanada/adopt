@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   before_action :authenticate_user, only: [:edit, :update, :destroy], notice: 'You must sign in first!'
   before_action :check_current_user, only: [:edit, :update, :destroy]
+  before_action :admin_access, only: [:index]
 
   def index
     @users = User.all
@@ -41,7 +42,10 @@ class UsersController < ApplicationController
     redirect_to action: :edit
   end
 
-  def delete
+  def destroy
+    User.find(params[:id]).destroy
+    @user = User.all
+    redirect_to root_path
   end
 
   private
@@ -51,14 +55,6 @@ class UsersController < ApplicationController
 
     def user_update_params
       params.require(:user).permit(:name, :email, :location, :about, :admin)
-    end
-
-    def check_current_user
-      if (current_user.present? && current_user.id.to_i === params[:id].to_i) || current_user.admin
-        return true
-      end
-      flash[:error] = "Restricted area! Paws off!"
-      redirect_to root_path
     end
 
 end

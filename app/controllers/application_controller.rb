@@ -30,4 +30,19 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def check_current_user
+    if (current_user.present? && current_user.id.to_i === params[:id].to_i) || current_user.admin
+      return true
+    end
+    flash[:error] = "Restricted area! Paws off!"
+    redirect_to root_path
+  end
+
+  def admin_access
+    if current_user.blank? || !current_user.admin
+      flash[:error] = "Restricted area! Paws off!"
+      redirect_to root_path
+    end
+  end
+
 end
