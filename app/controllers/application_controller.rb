@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_current_user
-    if (current_user.present? && current_user.id.to_i === params[:id].to_i) || current_user.admin
+    if current_user.present? && (current_user.id.to_i === params[:id].to_i || current_user.admin)
       return true
     end
     flash[:error] = "Restricted area! Paws off!"
