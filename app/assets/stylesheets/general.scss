@@ -71,6 +71,11 @@ form {
     background-color: $disabled_background_color;
     cursor: not-allowed;
   }
+  .form-control {
+    color: $body_font_color;
+    font-family: $body_font;
+    font-size: 14pt;
+  }
 }
 
 label {

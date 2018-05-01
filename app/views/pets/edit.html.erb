@@ -9,40 +9,7 @@
 <div class="center-alignment center-text">
   <%= form_for :pet, url: { action: "update" }, method: :PUT do |f| %>
     <%= render 'shared/error_messages', object: @pet %>
-    <div class="form-group">
-      <%= f.label "Name" %>
-      <%= f.text_field :name, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label("Species (dog, cat, bird)") %>
-      <%= f.text_field :species, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label "Breed" %>
-      <%= f.text_field :breed, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label "Age" %>
-      <%= f.text_field :age, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label "Location" %>
-      <%= f.text_field :location, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label "About" %>
-      <%= f.text_area :about %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label "Link to your pet pic!" %>
-      <%= f.text_field :picture, class: "form-control" %>
-    </div>
+    <%= render partial: "form", locals: { f: f } %>
 
     <% if pet_owner?(@current_user, @pet) %>
       <div class="form-group">

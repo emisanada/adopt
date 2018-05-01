@@ -9,41 +9,7 @@
 <div class="center-text center-alignment">
   <%= form_for :pet, url: { action: "create" } do |f| %>
     <%= render 'shared/error_messages', object: @pet %>
-    <div class="form-group">
-      <%= f.label "Name" %>
-      <%= f.text_field :name, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label "Species" %>
-      <%= f.text_field :species, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label "Breed" %>
-      <%= f.text_field :breed, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label "Age" %>
-      <%= f.text_field :age, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label "Location" %>
-      <%= f.text_field :location, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label "About" %>
-      <%= f.text_area :about %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label "Link to your pet pic!" %>
-      <%= f.text_field :picture, class: "form-control" %>
-    </div>
-
+    <%= render partial: "form", locals: { f: f } %>
     <%= f.button "Save", id: "create-pet-btn", class: "btn" %>
   <% end %>
 </div>
