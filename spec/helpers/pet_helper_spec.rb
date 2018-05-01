@@ -46,4 +46,16 @@ describe PetHelper do
       it { expect(helper.adopted_status(pet)).to eq 'Waiting for a home' }
     end
   end
+
+  describe '#adopted_icon' do
+    context 'when the pet adopted is true' do
+      let(:pet) { FactoryBot.build :pet, adopted: true }
+      it { expect(helper.adopted_icon(pet)).to eq "<i class=\"fa fa-check-square-o\"></i>" }
+    end
+
+    context 'when the pet adopted is false' do
+      let(:pet) { FactoryBot.build :pet, adopted: false }
+      it { expect(helper.adopted_icon(pet)).to eq "<i class=\"fa fa-square-o\"></i>" }
+    end
+  end
 end
