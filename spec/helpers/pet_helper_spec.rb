@@ -34,4 +34,16 @@ describe PetHelper do
       it { expect(helper.pet_owner?(nil, nil)).to be_falsey }
     end
   end
+
+  describe '#adopted_status' do
+    context 'when the pet adopted is true' do
+      let(:pet) { FactoryBot.build :pet, adopted: true }
+      it { expect(helper.adopted_status(pet)).to eq 'Yes!!!' }
+    end
+
+    context 'when the pet adopted is false' do
+      let(:pet) { FactoryBot.build :pet, adopted: false }
+      it { expect(helper.adopted_status(pet)).to eq 'Waiting for a home' }
+    end
+  end
 end
