@@ -26,48 +26,6 @@
   height: auto;
 }
 
-.pet-card {
-  cursor: pointer;
-  margin: 1.5em 2.5em;
-  height: 420px;
-  width: 300px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  overflow: hidden;
-  padding: 0;
-  h2 {
-    margin-bottom: 0;
-  }
-  &:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  }
-  .pet-card-bottom {
-    padding: 2px 16px;
-    display: flex;
-    float: left;
-    .pet-title {
-      width: 250px;
-    }
-    .pet-edit {
-      width: 50px;
-    }
-  }
-  .card-frame {
-    width: 15em;
-    height: 15em;
-    background: transparent no-repeat center;
-    background-size: cover;
-    display: block;
-    .card-img {
-      height: 15em;
-      width: auto;
-    }
-  }
-  .pet-info {
-    margin: 0 15px;
-  }
-}
-
 .pet-show-image {
   height: 15em;
   width: auto;
