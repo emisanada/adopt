@@ -6,7 +6,10 @@
 </div>
 <!-- END PAGE HEADER-->
 
-<div class="center-text">
+<div class="row center-text">
+  <p class="item">
+    <%= image_tag "#{@pet.picture}", class: "pet-show-image" %>
+  </p>
   <p class="item"><strong>Age</strong>: <%= @pet.age %></p>
   <p class="item"><strong>Species</strong>: <%= @pet.species %></p>
   <p class="item"><strong>Breed</strong>: <%= @pet.breed %></p>

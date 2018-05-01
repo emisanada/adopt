@@ -28,8 +28,8 @@
 
 .pet-card {
   cursor: pointer;
-  margin: 1.5em;
-  height: 390px;
+  margin: 1.5em 2.5em;
+  height: 420px;
   width: 300px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
@@ -66,4 +66,9 @@
   .pet-info {
     margin: 0 15px;
   }
+}
+
+.pet-show-image {
+  height: 15em;
+  width: auto;
 }

@@ -6,34 +6,32 @@
 </div>
 <!-- END PAGE HEADER-->
 
-<div class="container">
-  <div class="row">
-    <% @pets.each do |pet| %>
-      <%= link_to pet_path(pet.id) do %>
-        <div class="pet-card col-md-4">
-          <div class="card-frame">
-            <%= image_tag "#{pet.picture}", class: "card-img" %>
+<div class="row">
+  <% @pets.each do |pet| %>
+    <%= link_to pet_path(pet.id) do %>
+      <div class="pet-card col-md-4">
+        <div class="card-frame">
+          <%= image_tag "#{pet.picture}", class: "card-img" %>
+        </div>
+        <div class="pet-card-bottom">
+          <div class="pet-title">
+            <h2><%= pet.name %></h2>
           </div>
-          <div class="pet-card-bottom">
-            <div class="pet-title">
-              <h2><%= pet.name %></h2>
-            </div>
-            <div class="pet-edit">
-              <% if pet_owner?(@current_user, pet) %>
-                <%= link_to fa_icon("pencil"), edit_pet_path(pet.id) %>
-              <% end %>
-            </div>
-          </div>
-          <div class="pet-info">
-            <p>Species: <%= pet.species %></p>
-            <p>Location: <%= pet.location %></p>
-            <p>Adopted?: <%= pet.adopted ? "Yes!!!" : "Waiting for a home" %></p>
+          <div class="pet-edit">
+            <% if pet_owner?(@current_user, pet) %>
+              <%= link_to fa_icon("pencil"), edit_pet_path(pet.id) %>
+            <% end %>
           </div>
         </div>
-      <% end %>
+        <div class="pet-info">
+          <p>Species: <%= pet.species %></p>
+          <p>Location: <%= pet.location %></p>
+          <p>Adopted? <%= adopted_icon(pet) %></p>
+        </div>
+      </div>
     <% end %>
-    <% if @pets.blank? %>
-      <p>Nenhum usuário</p>
-    <% end %>
-  </div>
+  <% end %>
+  <% if @pets.blank? %>
+    <p>No pet registered yet!</p>
+  <% end %>
 </div>

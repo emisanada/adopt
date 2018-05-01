@@ -36,7 +36,7 @@
 
     <div class="form-group">
       <%= f.label "About" %>
-      <%= f.text_area :about, class: "form-control" %>
+      <%= f.text_area :about %>
     </div>
 
     <div class="form-group">
@@ -47,7 +47,7 @@
     <% if pet_owner?(@current_user, @pet) %>
       <div class="form-group">
         <%= f.label "Adopted?" %>
-        <%= f.check_box :adopted, class: "form-control" %>
+        <%= f.check_box :adopted %>
       </div>
     <% end %>
 

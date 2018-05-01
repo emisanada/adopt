@@ -6,4 +6,8 @@ module PetHelper
   def adopted_status(pet)
     pet.adopted ? 'Yes!!!' : 'Waiting for a home'
   end
+
+  def adopted_icon(pet)
+    pet.adopted ? fa_icon('check-square-o') : fa_icon('square-o')
+  end
 end

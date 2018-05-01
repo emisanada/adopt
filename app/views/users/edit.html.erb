@@ -26,13 +26,13 @@
 
     <div class="form-group">
       <%= f.label "About" %>
-      <%= f.text_area :about, class: "form-control" %>
+      <%= f.text_area :about %>
     </div>
 
     <% if user_admin?(@current_user) %>
       <div class="form-group">
         <%= f.label "Admin" %>
-        <%= f.check_box :admin, class: "form-control" %>
+        <%= f.check_box :admin %>
       </div>
     <% end %>
 
