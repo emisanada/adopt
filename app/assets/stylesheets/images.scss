@@ -16,3 +16,12 @@
     padding-top: 1.5em;
   }
 }
+
+.side-image {
+  overflow: hidden;
+  display: flex;
+  margin: 1em;
+  border-radius: 5%;
+  max-width: 90%;
+  height: auto;
+}
