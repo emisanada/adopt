@@ -171,4 +171,30 @@ describe UsersController do
       it { expect(response).to redirect_to root_path }
     end
   end
+
+  describe '.index' do
+    before do
+      allow_any_instance_of(ApplicationController).to receive(:admin_access).and_return(true)
+      allow(User).to receive(:find).and_return(user)
+    end
+
+    context 'when there is one user' do
+      let(:user) { FactoryBot.build :user, id: 1 }
+      before do
+        get :index
+      end
+      it { expect(response.status).to eq 200 }
+      it { expect(response).to render_template 'index' }
+    end
+
+    context 'when user is not admin' do
+      let(:user) { FactoryBot.build :user, id: 1 }
+      before do
+        allow_any_instance_of(ApplicationController).to receive(:admin_access).and_call_original
+        get :index
+      end
+      it { expect(response.status).to eq 302 }
+      it { expect(response).to redirect_to root_path }
+    end
+  end
 end
