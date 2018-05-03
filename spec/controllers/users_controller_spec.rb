@@ -197,4 +197,57 @@ describe UsersController do
       it { expect(response).to redirect_to root_path }
     end
   end
+
+  describe '.show' do
+    before do
+      allow(User).to receive(:find).and_return(user)
+    end
+
+    context 'when there is one user' do
+      let(:user) { FactoryBot.build :user, id: 1 }
+      before do
+        get :show, params: { id: user.id }
+      end
+      it { expect(response.status).to eq 200 }
+      it { expect(response).to render_template 'show' }
+    end
+  end
+
+  describe '.new' do
+    context 'when there is one user' do
+      before do
+        get :new
+      end
+      it { expect(response.status).to eq 200 }
+      it { expect(response).to render_template 'new' }
+    end
+  end
+
+  describe '.edit' do
+    before do
+      allow_any_instance_of(ApplicationController).to receive(:authenticate_user).and_return(true)
+      allow_any_instance_of(ApplicationController).to receive(:check_current_user).and_return(true)
+      allow(User).to receive(:find).and_return(user)
+    end
+
+    context 'when there is one user' do
+      let(:user) { FactoryBot.build :user, id: 1 }
+      before do
+        get :edit, params: { id: user.id }
+      end
+      it { expect(response.status).to eq 200 }
+      it { expect(response).to render_template 'edit' }
+    end
+
+    context 'when user is not admin' do
+      let(:user) { FactoryBot.build :user, id: 1 }
+      before do
+        allow_any_instance_of(ApplicationController).to receive(:check_current_user).and_call_original
+        get :edit, params: { id: user.id }
+      end
+      it { expect(response.status).to eq 302 }
+      it { expect(response).to redirect_to root_path }
+    end
+  end
+
 end
