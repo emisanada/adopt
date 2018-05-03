@@ -17,7 +17,7 @@ describe UsersController do
   end
 
   describe '.create' do
-    context 'when success' do
+    context 'when successfully create user' do
       before do
         post :create, params: user_params
       end
@@ -87,7 +87,7 @@ describe UsersController do
     end
     let(:user) { FactoryBot.build :user, id: 1 }
 
-    context 'when success' do
+    context 'when successfully update user' do
       before do
         patch :update, params: { id: user.id, user: user_params[:user] }
       end
@@ -132,6 +132,37 @@ describe UsersController do
       before do
         allow_any_instance_of(ApplicationController).to receive(:check_current_user).and_call_original
         patch :update, params: { id: user.id, user: user_params[:user] }
+      end
+      it { expect(response.status).to eq 302 }
+      it { expect(flash[:notice]).not_to be_present }
+      it { expect(flash[:error]).to be_present }
+      it { expect(flash[:error]).to eq 'Restricted area! Paws off!' }
+      it { expect(response).to redirect_to root_path }
+    end
+  end
+
+  describe '.destroy' do
+    before do
+      allow_any_instance_of(ApplicationController).to receive(:authenticate_user).and_return(true)
+      allow_any_instance_of(ApplicationController).to receive(:check_current_user).and_return(true)
+      allow(User).to receive(:find).and_return(user)
+      allow(User).to receive(:all).and_return(nil)
+    end
+    let(:user) { FactoryBot.build :user, id: 1 }
+
+    context 'when successfully delete user' do
+      before do
+        delete :destroy, params: { id: user.id, user: user_params[:user] }
+      end
+      it { expect(response.status).to eq 302 }
+      it { expect(flash[:error]).not_to be_present }
+      it { expect(response).to redirect_to root_path }
+    end
+
+    context 'when cant delete different user' do
+      before do
+        allow_any_instance_of(ApplicationController).to receive(:check_current_user).and_call_original
+        delete :destroy, params: { id: user.id, user: user_params[:user] }
       end
       it { expect(response.status).to eq 302 }
       it { expect(flash[:notice]).not_to be_present }

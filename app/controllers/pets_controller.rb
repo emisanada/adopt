@@ -1,6 +1,6 @@
 class PetsController < ApplicationController
 
-  before_action :check_user, only: [:new, :create, :create, :update, :delete]
+  before_action :check_user, only: [:new, :create, :create, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
 
   def index

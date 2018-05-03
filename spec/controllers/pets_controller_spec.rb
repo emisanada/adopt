@@ -27,7 +27,7 @@ describe PetsController do
   end
 
   describe '.create' do
-    context 'when success' do
+    context 'when successfully create pet' do
       before do
         post :create, params: pet_params
       end
@@ -104,7 +104,7 @@ describe PetsController do
       allow(Pet).to receive(:find).and_return(pet)
     end
 
-    context 'when success' do
+    context 'when successfully update pet info' do
       before do
         patch :update, params: { id: pet.id, pet: pet_params[:pet] }
       end
@@ -162,6 +162,48 @@ describe PetsController do
         user.id = 2
         allow_any_instance_of(PetsController).to receive(:check_owner).and_call_original
         patch :update, params: { id: user.id, pet: pet_params[:pet] }
+      end
+      it { expect(response.status).to eq 302 }
+      it { expect(flash[:notice]).not_to be_present }
+      it { expect(flash[:error]).to be_present }
+      it { expect(flash[:error]).to eq "Sorry! You don't have access to this page!" }
+      it { expect(response).to redirect_to root_path }
+    end
+  end
+
+  describe '.destroy' do
+    before do
+      allow(Pet).to receive(:find).and_return(pet)
+    end
+
+    context 'when successfully delete pet info' do
+      before do
+        delete :destroy, params: { id: pet.id, pet: pet_params[:pet] }
+      end
+      it { expect(response.status).to eq 302 }
+      it { expect(flash[:error]).not_to be_present }
+      it { expect(flash[:notice]).to be_present }
+      it { expect(flash[:notice]).to eq 'Your changes were saved! Whoof!' }
+      it { expect(response).to redirect_to root_path }
+    end
+
+    context 'when logged out' do
+      before do
+        allow_any_instance_of(ApplicationController).to receive(:check_user).and_call_original
+        delete :destroy, params: { id: pet.id, pet: pet_params[:pet] }
+      end
+      it { expect(response.status).to eq 302 }
+      it { expect(flash[:notice]).not_to be_present }
+      it { expect(flash[:error]).to be_present }
+      it { expect(flash[:error]).to eq 'To do this action, please login first ;)' }
+      it { expect(response).to redirect_to login_path }
+    end
+
+    context 'when user is not pet owner or admin' do
+      before do
+        user.id = 2
+        allow_any_instance_of(PetsController).to receive(:check_owner).and_call_original
+        delete :destroy, params: { id: user.id, pet: pet_params[:pet] }
       end
       it { expect(response.status).to eq 302 }
       it { expect(flash[:notice]).not_to be_present }
