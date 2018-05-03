@@ -24,3 +24,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore simplecov coverage results
+/coverage/assets
+/coverage/*.html
+/coverage/*.json
+/coverage/*.json.lock

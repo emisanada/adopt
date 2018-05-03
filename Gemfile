@@ -21,6 +21,7 @@ group :development, :test do
   gem 'pry'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
+  gem 'simplecov', require: false
 end
 
 group :development do
