@@ -1,5 +1,5 @@
-# require 'factory_bot_rails'
 require 'support/factory_bot'
+require 'simplecov'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -13,3 +13,5 @@ RSpec.configure do |config|
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
 end
+
+SimpleCov.minimum_coverage 90
