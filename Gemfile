@@ -17,11 +17,9 @@ gem 'bcrypt', require: 'bcrypt'
 gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.7'
   gem 'pry'
-  gem 'factory_bot_rails'
   gem 'rails-controller-testing'
-  gem 'simplecov', require: false
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -32,9 +30,11 @@ group :development do
 end
 
 group :test do
+  gem 'rspec-rails', '~> 3.7'
   gem 'capybara', '>= 2.15', '< 4.0'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+  gem 'simplecov', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
