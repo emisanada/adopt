@@ -1,5 +1,6 @@
 require 'support/factory_bot'
 require 'simplecov'
+require 'fuubar'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -12,6 +13,8 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
+
+  config.fuubar_progress_bar_options = { format: 'Progress: [%c/%C] |%B| %p%% %a', progress_mark: '█' }
 end
 
 SimpleCov.minimum_coverage 90
