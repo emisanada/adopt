@@ -58,6 +58,8 @@ jobs:
           path: /tmp/test-results
           destination: test-results
   deploy:
+    machine:
+      enable: true
     steps:
       - checkout
       - run:
