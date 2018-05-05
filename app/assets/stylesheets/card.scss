@@ -6,12 +6,6 @@
   width: 300px;
   transition: 0.3s;
   overflow: hidden;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  -webkit-transition-property: color;
-  transition-property: color;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
   background: $card_background_color;
 
   &.pet {
@@ -38,29 +32,6 @@
     a {
       color: $menu_font_color;
     }
-  }
-  &:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: $card_background_color_hover;
-    border-radius: 100%;
-    -webkit-transform: scale(0);
-    transform: scale(0);
-    -webkit-transition-property: transform;
-    transition-property: transform;
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
-  }
-  &:hover:before, &:focus:before, &:active:before {
-    -webkit-transform: scale(2);
-    transform: scale(2);
   }
   .card-title {
     padding: 2px 16px;

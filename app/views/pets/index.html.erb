@@ -9,7 +9,7 @@
 <div class="row">
   <% @pets.each do |pet| %>
     <%= link_to pet_path(pet.id) do %>
-      <div class="card-component pet col-md-4 adopted-<%= pet.adopted %>">
+      <div class="card-component pet hvr-sweep-to-right col-md-4 adopted-<%= pet.adopted %>">
         <div class="card-frame">
           <%= image_tag "#{pet.picture}", class: "card-img" %>
         </div>
