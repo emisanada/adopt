@@ -34,7 +34,7 @@ describe PetsController do
       it { expect(response.status).to eq 302 }
       it { expect(flash[:error]).not_to be_present }
       it { expect(flash[:notice]).to be_present }
-      it { expect(flash[:notice]).to eq 'Pet listed for adoption successfully!' }
+      it { expect(flash[:notice]).to eq 'Pet listed for adoption!' }
       it { expect(response).to redirect_to action: :index }
     end
 

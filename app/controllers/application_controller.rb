@@ -1,5 +1,6 @@
-class ApplicationController < ActionController::Base
+# frozen_string_literal: true
 
+class ApplicationController < ActionController::Base
   before_action :current_user
 
   def authenticate_user
@@ -25,7 +26,7 @@ class ApplicationController < ActionController::Base
 
   def check_user
     if @current_user.blank?
-      flash[:error] = "To do this action, please login first ;)"
+      flash[:error] = 'To do this action, please login first ;)'
       redirect_to login_path
     end
   end
@@ -34,15 +35,14 @@ class ApplicationController < ActionController::Base
     if current_user.present? && (current_user.id.to_i === params[:id].to_i || current_user.admin)
       return true
     end
-    flash[:error] = "Restricted area! Paws off!"
+    flash[:error] = 'Restricted area! Paws off!'
     redirect_to root_path
   end
 
   def admin_access
     if current_user.blank? || !current_user.admin
-      flash[:error] = "Restricted area! Paws off!"
+      flash[:error] = 'Restricted area! Paws off!'
       redirect_to root_path
     end
   end
-
 end
