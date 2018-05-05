@@ -19,8 +19,8 @@
   <p class="item"><strong>About</strong>: <%= @pet.about %></p>
   <div class="">
     <% if pet_owner?(@current_user, @pet) %>
-      <%= link_to fa_icon("pencil", text: "Edit"), edit_pet_path(@pet.id), class: "btn" %>
-      <%= link_to fa_icon("times", text: "Delete pet info"), pet_path(@pet.id), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }, class: "btn" %>
+      <%= link_to fa_icon("pencil", text: "Edit"), edit_pet_path(@pet.id), class: "btn hvr-sweep-to-right" %>
+      <%= link_to fa_icon("times", text: "Delete pet info"), pet_path(@pet.id), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }, class: "btn hvr-sweep-to-right" %>
     <% end %>
   </div>
 </div>

@@ -1,9 +1,11 @@
 <!-- BEGIN PAGE HEADER-->
 <div class="center-text">
   <div class="front-page-img" alt="Dog on the sidewalk">
-    <h1>
-      <i class="fa fa-paw" aria-hidden="true"></i>Adopt your pet here!<i class="fa fa-paw" aria-hidden="true"></i>
-    </h1>
+    <%= link_to pets_path, class: "simple-link hover-grow" do %>
+      <h1>
+        <i class="fa fa-paw" aria-hidden="true"></i>Adopt your pet here!<i class="fa fa-paw" aria-hidden="true"></i>
+      </h1>
+    <% end %>
   </div>
 </div>
 <!-- END PAGE HEADER-->

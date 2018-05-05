@@ -10,6 +10,6 @@
   <%= form_for :pet, url: { action: "create" } do |f| %>
     <%= render 'shared/error_messages', object: @pet %>
     <%= render partial: "form", locals: { f: f } %>
-    <%= f.button "Save", id: "create-pet-btn", class: "btn" %>
+    <%= f.button "Save", id: "create-pet-btn", class: "btn hvr-sweep-to-right" %>
   <% end %>
 </div>

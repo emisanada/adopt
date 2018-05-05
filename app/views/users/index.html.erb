@@ -15,9 +15,9 @@
       <p class="item"><strong>About</strong>: <%= user.about %></p>
       <div class="">
         <% if user_admin?(@current_user) %>
-          <%= link_to fa_icon("pencil", text: "Edit"), edit_user_path(user.id), class: "btn" %>
+          <%= link_to fa_icon("pencil", text: "Edit"), edit_user_path(user.id), class: "btn hvr-sweep-to-right" %>
         <% end %>
-        <%= link_to fa_icon("paw", text: "Show"), user_path(user.id), class: "btn"%>
+        <%= link_to fa_icon("paw", text: "Show"), user_path(user.id), class: "btn hvr-sweep-to-right"%>
       </div>
     </div>
   </div>
