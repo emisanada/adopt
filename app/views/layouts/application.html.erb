@@ -13,51 +13,51 @@
 
   <body>
     <!-- Wrapper -->
-    <div id="wrapper">
+    <div id="wrapper container">
 
       <!-- Header -->
-      <header id="header">
-        <nav class="links long-shadow left-header">
-          <ul>
-            <%= link_to new_pet_path, class: "hover-grow" do %>
-              <li><%= fa_icon("plus", text: "Add pet for adoption") %></li>
+      <header id="header" class="row">
+        <nav class="links long-shadow col-md-5">
+          <div class="row">
+            <%= link_to new_pet_path, class: "hover-grow col-md-7" do %>
+              <%= fa_icon("plus", text: "Add pet for adoption") %>
             <% end %>
-            <%= link_to pets_path, class: "hover-grow" do %>
-              <li><%= fa_icon("paw", text: "Check out pets") %></li>
+            <%= link_to pets_path, class: "hover-grow col-md-5" do %>
+              <%= fa_icon("paw", text: "Check out pets") %>
             <% end %>
-          </ul>
+          </div>
         </nav>
 
-        <div class="logo-header">
+        <div class="col-md-2">
           <%= link_to root_path do %>
             <img src="/images/Logo2.png" alt="Logo" class="logo" />
           <% end %>
         </div>
 
-        <nav class="links long-shadow right-header">
-          <ul>
+        <nav class="links long-shadow col-md-5">
+          <div class="row">
             <% if @current_user.present? %>
-              <%= link_to edit_user_path(@current_user.id), class: "hover-grow" do %>
-                <li><%= fa_icon("user", text: @current_user.username) %></li>
+              <%= link_to edit_user_path(@current_user.id), class: "hover-grow col-md-4" do %>
+                <%= fa_icon("user", text: @current_user.username) %>
               <% end %>
-              <%= link_to logout_path, class: "hover-grow" do %>
-                <li><%= fa_icon("sign-out", text: "Logout") %></li>
+              <%= link_to logout_path, class: "hover-grow col-md-4" do %>
+                <%= fa_icon("sign-out", text: "Logout") %>
               <% end %>
             <% else %>
-              <%= link_to login_path, class: "hover-grow" do %>
-                <li><%= fa_icon("sign-in", text: "Login") %></li>
+              <%= link_to login_path, class: "hover-grow col-md-4" do %>
+                <%= fa_icon("sign-in", text: "Login") %>
               <% end %>
-              <%= link_to new_user_path, class: "hover-grow" do %>
-                <li><%= fa_icon("sign-in", text: "Signup") %></li>
+              <%= link_to new_user_path, class: "hover-grow col-md-4" do %>
+                <%= fa_icon("sign-in", text: "Signup") %>
               <% end %>
             <% end %>
 
             <% if user_admin?(@current_user) %>
-              <%= link_to users_path, class: "hover-grow" do %>
-                <li><%= fa_icon("users", text: "List users") %></li>
+              <%= link_to users_path, class: "hover-grow col-md-4" do %>
+                <%= fa_icon("users", text: "List users") %>
               <% end %>
             <% end %>
-          </ul>
+          </div>
         </nav>
       </header>
 
@@ -80,16 +80,15 @@
         <% end %>
 
         <!-- Main -->
-        <div id="main container">
+        <div id="main" class="container">
           <%= yield %>
         </div>
       </div>
 
+      <footer>
+        <div id="footer">Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+      </footer>
+
     </div>
-
   </body>
-
-  <footer>
-    <div id="footer">Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
-  </footer>
 </html>

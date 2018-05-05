@@ -6,22 +6,27 @@
 </div>
 <!-- END PAGE HEADER-->
 
-<% @users.each do |user| %>
-  <div class="users-list">
-    <div class="user-card">
-      <h2><%= user.name %></h2>
-      <p class="item"><strong>Contact</strong>: <%= user.email %></p>
-      <p class="item"><strong>Location</strong>: <%= user.location %></p>
-      <p class="item"><strong>About</strong>: <%= user.about %></p>
-      <div class="">
-        <% if user_admin?(@current_user) %>
-          <%= link_to fa_icon("pencil", text: "Edit"), edit_user_path(user.id), class: "btn hvr-sweep-to-right" %>
-        <% end %>
-        <%= link_to fa_icon("paw", text: "Show"), user_path(user.id), class: "btn hvr-sweep-to-right"%>
+<div class="row">
+  <% @users.each do |user| %>
+    <%= link_to user_path(user.id) do %>
+      <div class="user-card col-md-4">
+        <div class="user-title">
+          <div class="user-name">
+            <h2><%= user.name %></h2>
+          </div>
+          <div class="user-edit">
+            <% if user_admin?(@current_user) %>
+              <%= link_to fa_icon("pencil"), edit_user_path(user.id) %>
+            <% end %>
+          </div>
+        </div>
+        <p class="item"><strong>Contact</strong>: <%= user.email %></p>
+        <p class="item"><strong>Location</strong>: <%= user.location %></p>
+        <p class="item"><strong>About</strong>: <%= user.about %></p>
       </div>
-    </div>
-  </div>
-<% end %>
+    <% end %>
+  <% end %>
+</div>
 <% if @users.blank? %>
   <p>No user registered yet!<i class="fa fa-frown-o" aria-hidden="true"></i></p>
 <% end %>
