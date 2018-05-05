@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <link href="https://fonts.googleapis.com/css?family=Gamja+Flower" rel="stylesheet">
+    <%= favicon_link_tag '/images/favicon.ico' %>
   </head>
 
   <body>
@@ -32,7 +33,7 @@
             <img src="/images/Logo2.png" alt="Logo" class="logo" />
           <% end %>
         </div>
-        
+
         <nav class="links long-shadow right-header">
           <ul>
             <% if @current_user.present? %>
