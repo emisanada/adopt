@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     end
     render 'new', status: 400
   rescue StandardError => e
-    Rails.logger.error "User creation failed! #{e.message} - #{e.bactrace.join("\n\t")}"
+    Rails.logger.error "User creation failed! #{e.message} - #{e.backtrace.join("\n\t")}"
     flash[:error] = 'Ops! There was a problem on your signup!'
     redirect_to action: :new
   end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     end
     render 'edit', status: 400
   rescue StandardError => e
-    Rails.logger.error "User update failed, Id: #{params[:id]}! #{e.message} - #{e.bactrace.join("\n\t")}"
+    Rails.logger.error "User update failed, Id: #{params[:id]}! #{e.message} - #{e.backtrace.join("\n\t")}"
     flash[:error] = 'Ops! There was a problem saving your changes!'
     redirect_to action: :edit
   end
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     Rails.logger.info "User was deleted! Id: #{params[:id]}"
     redirect_to root_path
   rescue StandardError => e
-    Rails.logger.error "User delete failed, Id: #{params[:id]}! #{e.message} - #{e.bactrace.join("\n\t")}"
+    Rails.logger.error "User delete failed, Id: #{params[:id]}! #{e.message} - #{e.backtrace.join("\n\t")}"
     flash[:error] = 'Ops! There was a problem saving your changes!'
     redirect_to action: :edit
   end

@@ -98,6 +98,18 @@ describe PetsController do
       it { expect(flash[:notice]).not_to be_present }
       it { expect(response).to render_template :new }
     end
+
+    context 'when raise StandardError' do
+      before do
+        allow_any_instance_of(Pet).to receive(:save).and_raise(StandardError)
+        post :create, params: pet_params
+      end
+      it { expect(response.status).to eq 302 }
+      it { expect(flash[:notice]).not_to be_present }
+      it { expect(flash[:error]).to be_present }
+      it { expect(flash[:error]).to eq 'Ops! There was a problem on your pet form!' }
+      it { expect(response).to redirect_to action: :new }
+    end
   end
 
   describe '.update' do
@@ -170,6 +182,18 @@ describe PetsController do
       it { expect(flash[:error]).to eq "Sorry! You don't have access to this page!" }
       it { expect(response).to redirect_to root_path }
     end
+
+    context 'when raise StandardError' do
+      before do
+        allow_any_instance_of(Pet).to receive(:update_attributes).and_raise(StandardError)
+        patch :update, params: { id: user.id, pet: pet_params[:pet] }
+      end
+      it { expect(response.status).to eq 302 }
+      it { expect(flash[:notice]).not_to be_present }
+      it { expect(flash[:error]).to be_present }
+      it { expect(flash[:error]).to eq 'Ops! There was a problem saving your changes!' }
+      it { expect(response).to redirect_to action: :edit }
+    end
   end
 
   describe '.destroy' do
@@ -211,6 +235,28 @@ describe PetsController do
       it { expect(flash[:error]).to be_present }
       it { expect(flash[:error]).to eq "Sorry! You don't have access to this page!" }
       it { expect(response).to redirect_to root_path }
+    end
+
+    context 'when raise StandardError' do
+      before do
+        allow_any_instance_of(Pet).to receive(:destroy).and_raise(StandardError)
+        delete :destroy, params: { id: user.id, pet: pet_params[:pet] }
+      end
+      it { expect(response.status).to eq 302 }
+      it { expect(flash[:notice]).not_to be_present }
+      it { expect(flash[:error]).to be_present }
+      it { expect(flash[:error]).to eq 'Ops! There was a problem deleting that pet info!' }
+      it { expect(response).to redirect_to action: :edit }
+    end
+  end
+
+  describe '.new' do
+    context 'when successfully load page' do
+      before do
+        get :new
+      end
+      it { expect(response.status).to eq 200 }
+      it { expect(response).to render_template :new }
     end
   end
 end

@@ -19,7 +19,7 @@ class PetsController < ApplicationController
     end
     render 'new', status: 400
   rescue StandardError => e
-    Rails.logger.error "Pet creation failed! #{e.message} - #{e.bactrace.join("\n\t")}"
+    Rails.logger.error "Pet creation failed! #{e.message} - #{e.backtrace.join("\n\t")}"
     flash[:error] = 'Ops! There was a problem on your pet form!'
     redirect_to action: :new
   end
@@ -32,7 +32,7 @@ class PetsController < ApplicationController
     end
     render 'edit', status: 400
   rescue StandardError => e
-    Rails.logger.error "Pet update failed, Id: #{params[:id]}! #{e.message} - #{e.bactrace.join("\n\t")}"
+    Rails.logger.error "Pet update failed, Id: #{params[:id]}! #{e.message} - #{e.backtrace.join("\n\t")}"
     flash[:error] = 'Ops! There was a problem saving your changes!'
     redirect_to action: :edit
   end
@@ -44,7 +44,7 @@ class PetsController < ApplicationController
     flash[:notice] = 'Your changes were saved! Whoof!'
     redirect_to root_path
   rescue StandardError => e
-    Rails.logger.error "Pet delete failed, Id: #{params[:id]}! #{e.message} - #{e.bactrace.join("\n\t")}"
+    Rails.logger.error "Pet delete failed, Id: #{params[:id]}! #{e.message} - #{e.backtrace.join("\n\t")}"
     flash[:error] = 'Ops! There was a problem deleting that pet info!'
     redirect_to action: :edit
   end
