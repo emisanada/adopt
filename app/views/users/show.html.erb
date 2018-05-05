@@ -7,10 +7,10 @@
 <!-- END PAGE HEADER-->
 
 <div class="center-text">
-  <p class="item"><strong>E-mail (for contact)</strong>: <%= @user.email %></p>
-  <p class="item"><strong>Location</strong>: <%= @user.location %></p>
-  <p class="item"><strong>Username</strong>: <%= @user.username %></p>
-  <p class="item"><strong>About</strong>: <%= @user.about %></p>
+  <p class="item"><i class="fa fa-envelope" aria-hidden="true"></i> E-mail (for contact): <%= @user.email %></p>
+  <p class="item"><i class="fa fa-map-marker" aria-hidden="true"></i> Location: <%= @user.location %></p>
+  <p class="item"><i class="fa fa-user" aria-hidden="true"></i> Username: <%= @user.username %></p>
+  <p class="item"><i class="fa fa-info" aria-hidden="true"></i> About: <%= @user.about %></p>
   <% if @user.admin %>
     <p class="item"><strong>Admin User</strong></p>
   <% end %>
