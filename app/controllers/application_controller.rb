@@ -6,18 +6,14 @@ class ApplicationController < ActionController::Base
   def authenticate_user
     if session[:user_id]
       @current_user = User.find(session[:user_id])
-      return true
+      return
     end
     redirect_to(controller: 'sessions', action: 'login')
-    false
   end
 
   def save_login_state
-    if session[:user_id]
-      redirect_to root_path
-      return false
-    end
-    true
+    return if !session[:user_id]
+    redirect_to root_path
   end
 
   def current_user
@@ -33,7 +29,7 @@ class ApplicationController < ActionController::Base
 
   def check_current_user
     if current_user.present? && (current_user.id.to_i === params[:id].to_i || current_user.admin)
-      return true
+      return
     end
     flash[:error] = 'Restricted area! Paws off!'
     redirect_to root_path
