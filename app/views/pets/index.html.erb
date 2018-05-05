@@ -9,21 +9,21 @@
 <div class="row">
   <% @pets.each do |pet| %>
     <%= link_to pet_path(pet.id) do %>
-      <div class="pet-card col-md-4 adopted-<%= pet.adopted %>">
+      <div class="card-component pet col-md-4 adopted-<%= pet.adopted %>">
         <div class="card-frame">
           <%= image_tag "#{pet.picture}", class: "card-img" %>
         </div>
-        <div class="pet-card-bottom">
-          <div class="pet-title">
+        <div class="card-title">
+          <div class="card-name">
             <h2><%= pet.name %></h2>
           </div>
-          <div class="pet-edit">
+          <div class="card-edit">
             <% if pet_owner?(@current_user, pet) %>
               <%= link_to fa_icon("pencil"), edit_pet_path(pet.id) %>
             <% end %>
           </div>
         </div>
-        <div class="pet-info">
+        <div class="card-info">
           <p>Species: <%= pet.species %></p>
           <p>Location: <%= pet.location %></p>
           <p>Adopted? <%= adopted_icon(pet) %></p>

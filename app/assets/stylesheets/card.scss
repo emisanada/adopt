@@ -1,13 +1,11 @@
 @import "colors";
 
-.pet-card {
+.card-component {
   cursor: pointer;
   margin: 1.5em 2.5em;
-  height: 420px;
   width: 300px;
   transition: 0.3s;
   overflow: hidden;
-  padding: 0;
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   -webkit-transition-property: color;
@@ -15,6 +13,15 @@
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   background: $card_background_color;
+
+  &.pet {
+    padding: 0;
+    height: 420px;
+  }
+  &.user {
+    padding: 10px;
+    height: 220px;
+  }
 
   h2 {
     margin-bottom: 0;
@@ -28,6 +35,9 @@
   &:hover, &:focus, &:active {
     color: $menu_font_color;
     box-shadow: 0 8px 16px 0 $regular_box_shadow;
+    a {
+      color: $menu_font_color;
+    }
   }
   &:before {
     content: "";
@@ -52,16 +62,16 @@
     -webkit-transform: scale(2);
     transform: scale(2);
   }
-  .pet-card-bottom {
+  .card-title {
     padding: 2px 16px;
     display: flex;
     float: left;
-    .pet-title {
-      width: 250px;
-    }
-    .pet-edit {
-      width: 50px;
-    }
+  }
+  .card-name {
+    width: 250px;
+  }
+  .card-edit {
+    width: 50px;
   }
   .card-frame {
     width: 15em;
@@ -69,13 +79,17 @@
     background: transparent no-repeat center;
     background-size: cover;
     display: block;
+    padding: 0;
     .card-img {
       height: 15em;
       width: auto;
     }
   }
-  .pet-info {
+  .card-info {
     margin: 0 15px;
+  }
+  .item {
+    padding-left: 15px;
   }
 
 }

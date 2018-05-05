@@ -9,12 +9,12 @@
 <div class="row">
   <% @users.each do |user| %>
     <%= link_to user_path(user.id) do %>
-      <div class="user-card col-md-4">
-        <div class="user-title">
-          <div class="user-name">
+      <div class="card-component user col-md-4">
+        <div class="card-title">
+          <div class="card-name">
             <h2><%= user.name %></h2>
           </div>
-          <div class="user-edit">
+          <div class="card-edit">
             <% if user_admin?(@current_user) %>
               <%= link_to fa_icon("pencil"), edit_user_path(user.id) %>
             <% end %>
