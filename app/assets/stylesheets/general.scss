@@ -21,6 +21,7 @@ body {
   line-height: 1;
   width: 100%;
   padding-top: 2.5em;
+  -ms-overflow-style: scrollbar;
 }
 
 ol, ul {
@@ -60,6 +61,132 @@ h2 {
 }
 h3 {
   font-size: 16pt;
+}
+
+@media screen and (max-width: 1950px) {
+  #header a {
+    font-size: 17pt;
+    line-height: 3.5em;
+  }
+}
+@media screen and (max-width: 1800px) {
+  #header a {
+    font-size: 15pt;
+    line-height: 3.5em;
+  }
+}
+@media screen and (max-width: 1680px) {
+  body, input, select, textarea {
+    font-size: 12pt;
+  }
+  #header a {
+    font-size: 14pt;
+    line-height: 3em;
+  }
+}
+@media screen and (max-width: 1550px) {
+  #header a {
+    font-size: 13pt;
+    line-height: 3em;
+  }
+}
+@media screen and (max-width: 1450px) {
+  #header a {
+    font-size: 12pt;
+    line-height: 2.5em;
+  }
+}
+@media screen and (max-width: 1350px) {
+  #header a {
+    font-size: 11pt;
+    line-height: 2.5em;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .row > * {
+    padding: 0 0 0 1em;
+  }
+  .row {
+    margin: 0 0 -1px -1em;
+  }
+  body, input, select, textarea {
+    font-size: 12pt;
+  }
+  #header a {
+    font-size: 11pt;
+    line-height: 2em;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #header a {
+    font-size: 10pt;
+    line-height: 2em;
+  }
+}
+
+@media screen and (max-width: 1090px) {
+  #header a {
+    padding-right: 1.5em !important;
+    font-size: 9pt;
+    line-height: 2em;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .row > * {
+    padding: 0 0 0 1em;
+  }
+  .row {
+    margin: 0 0 -1px -1em;
+  }
+  body, input, select, textarea {
+    font-size: 12pt;
+  }
+  #header .links {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .row > * {
+    padding: 0 0 0 1em;
+  }
+  .row {
+    margin: 0 0 -1px -1em;
+  }
+  body, input, select, textarea {
+    font-size: 12pt;
+  }
+  #header {
+    height: 2.75em;
+    line-height: 2.75em;
+  }
+
+  #header .main {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .row > * {
+    padding: 0 0 0 1em;
+  }
+  .row {
+    margin: 0 0 -1px -1em;
+  }
+  html, body {
+    min-width: 320px;
+  }
+  body, input, select, textarea {
+    font-size: 12pt;
+  }
+}
+
+/* Basic */
+
+@-ms-viewport {
+  width: device-width;
 }
 
 /* FORMS */
@@ -163,22 +290,21 @@ textarea:focus {
   display: flex;
   background-color: $main_background_color;
   color: $menu_font_color;
-  font-size: 15pt;
+  font-size: 18pt;
+  line-height: 3.5em;
   height: 4.2em;
-  line-height: 4.2em;
   height: 70px;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 10000;
+  font-weight: 400;
+  text-transform: uppercase;
 
   a {
     color: inherit;
     text-decoration: none;
-    padding-right: 1.5em;
-    text-transform: uppercase;
-    font-size: 0.8em;
-    font-weight: 400;
+    padding-right: 2.5em;
     letter-spacing: 0.25em;
   }
 
