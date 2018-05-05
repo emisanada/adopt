@@ -174,7 +174,7 @@ textarea:focus {
   a {
     color: inherit;
     text-decoration: none;
-    padding-right: 1em;
+    padding-right: 1.5em;
     text-transform: uppercase;
     font-size: 0.7em;
     font-weight: 400;
@@ -187,7 +187,7 @@ textarea:focus {
 
   .logo {
     height: 95px;
-    margin-left: 2em;
+    margin-left: 1.5em;
     overflow: visible;
   }
 
@@ -207,10 +207,9 @@ textarea:focus {
 
 /* FOOTER */
 #footer {
- position: fixed;
- bottom: 0;
  padding: 5px 10px 0 0;
  width: 100%;
+ height: 20px;
  background: $main_background_color;
  color: $menu_font_color;
  font-size: 8pt;
@@ -422,4 +421,5 @@ textarea:focus {
   display: flex;
   float: left;
   margin: 1em;
+  height: 700px;
 }
