@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'rails_helper'
 
 describe UsersController do
-
   let(:user_params) do
     {
       user: {
@@ -249,5 +250,4 @@ describe UsersController do
       it { expect(response).to redirect_to root_path }
     end
   end
-
 end

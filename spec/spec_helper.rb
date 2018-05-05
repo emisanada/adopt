@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'support/factory_bot'
 require 'simplecov'
 require 'fuubar'
@@ -7,7 +9,7 @@ RSpec.configure do |config|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 
-  require File.expand_path("../../config/environment", __FILE__)
+  require File.expand_path('../config/environment', __dir__)
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,36 +12,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_30_222857) do
-
+ActiveRecord::Schema.define(version: 20_180_430_222_857) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "pets", force: :cascade do |t|
-    t.string "name", limit: 25, null: false
-    t.string "breed", limit: 255, null: false
-    t.string "age", limit: 255, default: "", null: false
-    t.boolean "adopted", null: false
-    t.string "location", limit: 255, default: "", null: false
-    t.integer "user_id", null: false
-    t.string "picture", limit: 255, default: "", null: false
-    t.string "about", limit: 255, default: "", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "species", limit: 50, default: "", null: false
+  create_table 'pets', force: :cascade do |t|
+    t.string 'name', limit: 25, null: false
+    t.string 'breed', limit: 255, null: false
+    t.string 'age', limit: 255, default: '', null: false
+    t.boolean 'adopted', null: false
+    t.string 'location', limit: 255, default: '', null: false
+    t.integer 'user_id', null: false
+    t.string 'picture', limit: 255, default: '', null: false
+    t.string 'about', limit: 255, default: '', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'species', limit: 50, default: '', null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email", limit: 255, null: false
-    t.string "name", limit: 255, null: false
-    t.string "username", limit: 25, null: false
-    t.string "encrypted_password", null: false
-    t.string "location", limit: 255, default: "", null: false
-    t.string "about", limit: 255, default: "", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "salt"
-    t.boolean "admin", default: false, null: false
+  create_table 'users', force: :cascade do |t|
+    t.string 'email', limit: 255, null: false
+    t.string 'name', limit: 255, null: false
+    t.string 'username', limit: 25, null: false
+    t.string 'encrypted_password', null: false
+    t.string 'location', limit: 255, default: '', null: false
+    t.string 'about', limit: 255, default: '', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'salt'
+    t.boolean 'admin', default: false, null: false
   end
-
 end
