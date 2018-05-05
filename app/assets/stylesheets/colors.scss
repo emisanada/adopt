@@ -6,7 +6,7 @@ $background_color: #f4f4f4;
 $background_color_optional: #FCD3DE;
 $body_font_color: #0199d9;
 $body_font_color_optional: #9883E5;
-$menu_font_color: #f4f4f4;
+$menu_font_color: #fff;
 $header_font_color: #3c3b3b;
 $border_color: #0199d9;
 
@@ -40,6 +40,10 @@ $error_link_color: #843534;
 // TEXT SHADOW COLOR
 $text_shadow_color: #0199d9;
 $text_shadow_hover_color: #a4e8ea;
+
+// CARD COLOR
+$card_background_color: #fff;
+$card_background_color_hover: #2e382e;
 
 // PET card-img
 $regular_box_shadow: rgba(0,0,0,0.2);

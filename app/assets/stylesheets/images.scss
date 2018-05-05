@@ -2,7 +2,7 @@
 
 .front-page-img {
   width: 100%;
-  height: 500px;
+  height: 30em;
   display: flex;
   flex-flow: column wrap;
   align-items: center;
@@ -14,6 +14,13 @@
   margin-bottom: 10px;
   h1 {
     padding-top: 1.5em;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .front-page-img {
+    background-repeat: no-repeat;
+    background-size: 1200px;
   }
 }
 

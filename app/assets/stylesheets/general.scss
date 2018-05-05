@@ -1,8 +1,9 @@
 @import "colors";
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Raleway:400,800,900");
+@import url("https://fonts.googleapis.com/css?family=Quicksand");
 
-$header_font: "Gamja Flower", cursive;
-$body_font: "Source Sans Pro", Helvetica, sans-serif;
+$header_font: 'Gamja Flower', cursive;
+$body_font: 'Quicksand', sans-serif;
 
 html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, img, small, strike, strong, i, ol, ul, li, form, label, table, tbody, tfoot, thead, tr, th, td, article, footer, header, menu, nav {
   margin: 0;
@@ -65,13 +66,13 @@ h3 {
 
 @media screen and (max-width: 1950px) {
   #header a {
-    font-size: 17pt;
+    font-size: 16pt;
     line-height: 3.5em;
   }
 }
 @media screen and (max-width: 1800px) {
   #header a {
-    font-size: 15pt;
+    font-size: 14pt;
     line-height: 3.5em;
   }
 }
@@ -80,23 +81,17 @@ h3 {
     font-size: 12pt;
   }
   #header a {
-    font-size: 14pt;
+    font-size: 13pt;
     line-height: 3em;
   }
 }
 @media screen and (max-width: 1550px) {
   #header a {
-    font-size: 13pt;
+    font-size: 12pt;
     line-height: 3em;
   }
 }
 @media screen and (max-width: 1450px) {
-  #header a {
-    font-size: 12pt;
-    line-height: 2.5em;
-  }
-}
-@media screen and (max-width: 1350px) {
   #header a {
     font-size: 11pt;
     line-height: 2.5em;
@@ -113,22 +108,21 @@ h3 {
     font-size: 12pt;
   }
   #header a {
-    font-size: 11pt;
-    line-height: 2em;
+    font-size: 9pt;
+    line-height: 2.5em;
   }
 }
-
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1110px) {
   #header a {
-    font-size: 10pt;
+    font-size: 8pt;
     line-height: 2em;
   }
 }
 
-@media screen and (max-width: 1090px) {
+@media screen and (max-width: 1050px) {
   #header a {
     padding-right: 1.5em !important;
-    font-size: 9pt;
+    font-size: 8pt;
     line-height: 2em;
   }
 }
@@ -143,6 +137,9 @@ h3 {
   body, input, select, textarea {
     font-size: 12pt;
   }
+}
+
+@media screen and (max-width: 836px) {
   #header .links {
     display: none;
   }
@@ -162,7 +159,6 @@ h3 {
     height: 2.75em;
     line-height: 2.75em;
   }
-
   #header .main {
     display: none;
   }

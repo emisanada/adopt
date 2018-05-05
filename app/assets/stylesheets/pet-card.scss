@@ -5,7 +5,6 @@
   margin: 1.5em 2.5em;
   height: 420px;
   width: 300px;
-  box-shadow: 0 4px 8px 0 $regular_box_shadow;
   transition: 0.3s;
   overflow: hidden;
   padding: 0;
@@ -15,6 +14,7 @@
   transition-property: color;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
+  background: $card_background_color;
 
   h2 {
     margin-bottom: 0;
@@ -22,7 +22,7 @@
   a {
     text-decoration: none;
   }
-  &.adopted-true {
+  &.adopted-true:hover {
     box-shadow: 0 4px 8px 0 $adopted_box_shadow;
   }
   &:hover, &:focus, &:active {
@@ -37,7 +37,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: $main_background_color;
+    background: $card_background_color_hover;
     border-radius: 100%;
     -webkit-transform: scale(0);
     transform: scale(0);
