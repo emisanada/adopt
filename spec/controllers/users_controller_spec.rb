@@ -78,6 +78,18 @@ describe UsersController do
       it { expect(flash[:notice]).not_to be_present }
       it { expect(response).to render_template :new }
     end
+
+    context 'when raise StandardError' do
+      before do
+        allow_any_instance_of(User).to receive(:save).and_raise(StandardError)
+        post :create, params: user_params
+      end
+      it { expect(response.status).to eq 302 }
+      it { expect(flash[:notice]).not_to be_present }
+      it { expect(flash[:error]).to be_present }
+      it { expect(flash[:error]).to eq 'Ops! There was a problem on your signup!' }
+      it { expect(response).to redirect_to action: :new }
+    end
   end
 
   describe '.update' do
@@ -140,6 +152,18 @@ describe UsersController do
       it { expect(flash[:error]).to eq 'Restricted area! Paws off!' }
       it { expect(response).to redirect_to root_path }
     end
+
+    context 'when raise StandardError' do
+      before do
+        allow_any_instance_of(User).to receive(:update_attributes).and_raise(StandardError)
+        patch :update, params: { id: user.id, user: user_params[:user] }
+      end
+      it { expect(response.status).to eq 302 }
+      it { expect(flash[:notice]).not_to be_present }
+      it { expect(flash[:error]).to be_present }
+      it { expect(flash[:error]).to eq 'Ops! There was a problem saving your changes!' }
+      it { expect(response).to redirect_to action: :edit }
+    end
   end
 
   describe '.destroy' do
@@ -170,6 +194,18 @@ describe UsersController do
       it { expect(flash[:error]).to be_present }
       it { expect(flash[:error]).to eq 'Restricted area! Paws off!' }
       it { expect(response).to redirect_to root_path }
+    end
+
+    context 'when raise StandardError' do
+      before do
+        allow_any_instance_of(User).to receive(:destroy).and_raise(StandardError)
+        delete :destroy, params: { id: user.id, user: user_params[:user] }
+      end
+      it { expect(response.status).to eq 302 }
+      it { expect(flash[:notice]).not_to be_present }
+      it { expect(flash[:error]).to be_present }
+      it { expect(flash[:error]).to eq 'Ops! There was a problem saving your changes!' }
+      it { expect(response).to redirect_to action: :edit }
     end
   end
 
