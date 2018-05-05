@@ -250,6 +250,15 @@ describe PetsController do
     end
   end
 
+  describe '.index' do
+    before do
+      allow(Pet).to receive(:all).and_return(pet)
+      get :index
+    end
+    it { expect(response.status).to eq 200 }
+    it { expect(response).to render_template 'index' }
+  end
+
   describe '.new' do
     context 'when successfully load page' do
       before do
