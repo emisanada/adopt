@@ -12,10 +12,19 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+    render json: @user if api_call?
+  end
+
+  def index
+    render json: @users if api_call?
+  end
+
   def create
     if @user.save
       Rails.logger.info "User #{@user.name} was created! Id: #{@user.id}"
       flash[:notice] = 'You signed up successfully!'
+      return render json: @user if api_call?
       return redirect_to root_path
     end
     render 'new', status: 400
@@ -70,5 +79,9 @@ class UsersController < ApplicationController
 
   def new_user
     @user = User.new(user_params)
+  end
+
+  def authenticated_user?(username, password)
+    User.find_by_username(username) && User.authenticate(username, password)
   end
 end

@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   before_action :current_user
+  protect_from_forgery with: :null_session
 
   def authenticate_user
     if session[:user_id]
@@ -36,9 +37,19 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_access
-    if current_user.blank? || !current_user.admin
+    user = current_user
+    if api_call?
+      user = authenticate_with_http_basic do |username, password|
+        authenticated_user?(username, password)
+      end
+    end
+    if user.blank? || !user.admin
       flash[:error] = 'Restricted area! Paws off!'
       redirect_to root_path
     end
+  end
+
+  def api_call?
+    request.content_type == Mime[:json]
   end
 end
