@@ -52,6 +52,7 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     @user = User.all
     Rails.logger.info "User was deleted! Id: #{params[:id]}"
+    return render json: @user if api_call?
     redirect_to root_path
   rescue StandardError => e
     Rails.logger.error "User delete failed, Id: #{params[:id]}! #{e.message} - #{e.backtrace.join("\n\t")}"
@@ -82,7 +83,4 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
   end
 
-  def authenticated_user?(username, password)
-    User.find_by_username(username) && User.authenticate(username, password)
-  end
 end

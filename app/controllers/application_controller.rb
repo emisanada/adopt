@@ -43,6 +43,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticated_user?(username, password)
+    User.find_by_username(username) && User.authenticate(username, password)
+  end
+
   def admin_access
     if current_user.blank? || !current_user.admin
       flash[:error] = 'Restricted area! Paws off!'

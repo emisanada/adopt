@@ -11,10 +11,19 @@ class PetsController < ApplicationController
     @pet = Pet.new
   end
 
+  def index
+    render json: @pets if api_call?
+  end
+
+  def show
+    render json: @pet if api_call?
+  end
+
   def create
     if @pet.save
       Rails.logger.info "Pet #{@pet.name} was created! Id: #{@pet.id}"
       flash[:notice] = 'Pet listed for adoption!'
+      return render json: @pet if api_call?
       return redirect_to action: :index
     end
     render 'new', status: 400
@@ -28,6 +37,7 @@ class PetsController < ApplicationController
     if @pet.update_attributes(pet_update_params)
       Rails.logger.info "Pet #{@pet.name} was updated! Id: #{@pet.id}"
       flash[:notice] = 'Your changes were saved! Whoof!'
+      return render json: @pet if api_call?
       return redirect_to action: :show
     end
     render 'edit', status: 400
@@ -39,9 +49,10 @@ class PetsController < ApplicationController
 
   def destroy
     Pet.find(params[:id]).destroy
-    @pet = Pet.all
+    @pets = Pet.all
     Rails.logger.info "Pet Id: #{params[:id]} deleted!"
     flash[:notice] = 'Your changes were saved! Whoof!'
+    return render json: @pets if api_call?
     redirect_to root_path
   rescue StandardError => e
     Rails.logger.error "Pet delete failed, Id: #{params[:id]}! #{e.message} - #{e.backtrace.join("\n\t")}"
