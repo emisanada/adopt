@@ -21,9 +21,4 @@ class Pet < ActiveRecord::Base
             presence: true,
             length: { in: 3..255 }
 
-  def self.authenticate(username = '', login_password = '')
-    user = User.find_by_username(username)
-    return user if user&.match_password(login_password)
-    false
-  end
 end
