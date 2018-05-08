@@ -39,9 +39,19 @@ describe UsersController do
       it { expect(response).to render_template :new }
     end
 
-    context 'when username is invalid' do
+    context 'when username is too short' do
       before do
         user_params[:user][:username] = 'tr'
+        post :create, params: user_params
+      end
+      it { expect(response.status).to eq 400 }
+      it { expect(flash[:notice]).not_to be_present }
+      it { expect(response).to render_template :new }
+    end
+
+    context 'when username is too long' do
+      before do
+        user_params[:user][:username] = 'aaaaabbbbbcccccdddddeeeeefffff'
         post :create, params: user_params
       end
       it { expect(response.status).to eq 400 }

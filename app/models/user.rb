@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   EMAIL_REGEX = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i
   HARD_PASSWORD = /\A(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[[:^alnum:]])/x
   EASY_PASSWORD = /\A(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/x
+  USERNAME_REGEX = /\A[a-z0-9_]{3,25}/x
 
   validates :password,
             presence: true,
@@ -23,6 +24,7 @@ class User < ActiveRecord::Base
   validates :username,
             presence: true,
             uniqueness: true,
+            format: { with: USERNAME_REGEX },
             length: { in: 3..25 }
   validates :name,
             presence: true,
