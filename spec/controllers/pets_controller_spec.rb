@@ -160,6 +160,7 @@ describe PetsController do
 
     context 'when logged out' do
       before do
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_call_original
         allow_any_instance_of(ApplicationController).to receive(:check_user).and_call_original
         patch :update, params: { id: pet.id, pet: pet_params[:pet] }
       end
@@ -214,6 +215,7 @@ describe PetsController do
 
     context 'when logged out' do
       before do
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_call_original
         allow_any_instance_of(ApplicationController).to receive(:check_user).and_call_original
         delete :destroy, params: { id: pet.id, pet: pet_params[:pet] }
       end
