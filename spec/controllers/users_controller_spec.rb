@@ -108,7 +108,7 @@ describe UsersController do
       allow_any_instance_of(ApplicationController).to receive(:check_current_user).and_return(true)
       allow(User).to receive(:find).and_return(user)
     end
-    let(:user) { FactoryBot.build :user, id: 1 }
+    let(:user) { FactoryBot.build :user, id: 1, username: 'another', email: 'email@test.com' }
 
     context 'when successfully update user' do
       before do
