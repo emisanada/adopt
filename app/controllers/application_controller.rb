@@ -2,14 +2,15 @@
 
 class ApplicationController < ActionController::Base
   before_action :current_user
-  protect_from_forgery with: :null_session
+  protect_from_forgery with: :exception
+  skip_before_action :verify_authenticity_token
 
   def authenticate_user
-    if session[:user_id]
-      @current_user = User.find(session[:user_id])
-      return
+    if !session[:user_id] && !api_call?
+      return redirect_to(controller: 'sessions', action: 'login')
     end
-    redirect_to(controller: 'sessions', action: 'login')
+    return @current_user = current_user if api_call?
+    @current_user = User.find(session[:user_id])
   end
 
   def save_login_state

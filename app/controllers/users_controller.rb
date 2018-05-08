@@ -38,6 +38,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(user_update_params)
       Rails.logger.info "User #{@user.name} was updated! Id: #{@user.id}"
       flash[:notice] = 'Your changes were saved! Whoof!'
+      return render json: @user if api_call?
       return redirect_to action: :show
     end
     render 'edit', status: 400
