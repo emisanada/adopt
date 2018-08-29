@@ -2,6 +2,7 @@
 
 Adopt is a project create with Ruby on Rails focused in helping homeless pets find someone!
 If you are searching for your other furry half or found a pet in distress but can't look after it, this is the place for you!
+Check the project on https://adopt-rails.herokuapp.com/ :dog: :cat:
 
 * Ruby version: 2.4.2
 
